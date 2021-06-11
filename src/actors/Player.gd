@@ -1,7 +1,5 @@
 extends KinematicBody2D
 
-signal enemy_killed
-
 export var max_dash_distance = 200
 export var max_follow_through_distance = 150
 export var speed = 2000
