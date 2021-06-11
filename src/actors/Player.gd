@@ -10,7 +10,7 @@ func _physics_process(_delta):
 	move_player()
 
 func move_player():
-	if Input.is_action_pressed("dash"):
+	if Input.is_action_just_pressed("dash"):
 		var mouse_pos = get_viewport().get_mouse_position()
 		start_pos = position
 		direction = (mouse_pos - position).normalized()
