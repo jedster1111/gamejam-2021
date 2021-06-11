@@ -22,3 +22,6 @@ func move_player():
 		velocity = Vector2()
 	
 	velocity =  move_and_slide(velocity)
+
+func _on_EnemyDetector_body_entered(body):
+	print(body.name)
