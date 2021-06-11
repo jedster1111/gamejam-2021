@@ -2,8 +2,8 @@ extends KinematicBody2D
 
 export var max_dash_distance = 200
 export var max_follow_through_distance = 150
-export var speed = 1000
-export var follow_through_speed = 1500
+export var speed = 2000
+export var follow_through_speed = 3000
 var velocity = Vector2(0,0)
 var direction = Vector2(0,0)
 var start_pos = position
@@ -29,7 +29,8 @@ func _physics_process(_delta):
 			move_player()
 
 func move_player():
-	velocity = move_and_slide(velocity)
+	var collision = move_and_collide(velocity * get_process_delta_time())
+	if collision: start_idle()
 
 func _on_EnemyDetector_body_entered(enemy):
 	if(mode == Modes.DASHING):
