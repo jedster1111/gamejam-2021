@@ -14,8 +14,8 @@ enum Modes {IDLE, DASHING, FOLLOW_THROUGH}
 var mode = Modes.IDLE
 
 func _physics_process(_delta):
-	if Input.is_action_just_pressed("dash"):
-		start_dash(get_viewport().get_mouse_position())
+	if Input.is_action_just_pressed("dash") and mode != Modes.DASHING:
+		start_dash(get_global_mouse_position())
 
 	Engine.time_scale = 1
 	match mode:
@@ -39,8 +39,10 @@ func move_player():
 func _on_EnemyDetector_body_entered(enemy):
 	if(mode == Modes.DASHING):
 		start_follow_through(enemy.position)
+		enemy.hit()
 
 func start_idle():
+	mode = Modes.IDLE
 	direction = Vector2()
 	velocity = Vector2()
 

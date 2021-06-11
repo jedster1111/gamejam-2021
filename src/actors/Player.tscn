@@ -4,7 +4,7 @@
 [ext_resource path="res://src/actors/Player.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+extents = Vector2( 27.5, 27 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 31.743, 31.4196 )
@@ -25,4 +25,7 @@ collision_mask = 4
 
 [node name="EnemyDetectorShape" type="CollisionShape2D" parent="EnemyDetector"]
 shape = SubResource( 2 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]
