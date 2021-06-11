@@ -53,9 +53,9 @@ func start_dash(dash_to_position):
 func end_dash():
 	start_idle()
 
-func start_follow_through(start_of_follow_through):
+func start_follow_through(follow_through_start_position):
 	mode = Modes.FOLLOW_THROUGH
-	start_pos = start_of_follow_through
+	start_pos = follow_through_start_position
 	velocity = direction * follow_through_speed
 
 func end_follow_through():
