@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal enemy_killed
+
 export var max_dash_distance = 200
 export var max_follow_through_distance = 150
 export var speed = 2000
@@ -15,6 +17,7 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("dash"):
 		start_dash(get_viewport().get_mouse_position())
 
+	Engine.time_scale = 1
 	match mode:
 		Modes.DASHING:
 			var dash_distance = (position - start_pos).length()
@@ -23,6 +26,7 @@ func _physics_process(_delta):
 			move_player()
 
 		Modes.FOLLOW_THROUGH:
+			Engine.time_scale = 0.1
 			var follow_through_distance = (position - start_pos).length()
 			if follow_through_distance > max_follow_through_distance:
 				end_follow_through()
@@ -50,7 +54,6 @@ func end_dash():
 	start_idle()
 
 func start_follow_through(start_of_follow_through):
-	print("Starting follow through")
 	mode = Modes.FOLLOW_THROUGH
 	start_pos = start_of_follow_through
 	velocity = direction * follow_through_speed
