@@ -1,5 +1,4 @@
-extends Node2D
+extends "res://src/levels/Level.gd"
 
-
-func _on_Enemy_shoot(bullet):
-	add_child(bullet)
+func _process(_delta):
+	pass
