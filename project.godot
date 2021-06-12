@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Level",
 "language": "GDScript",
 "path": "res://src/levels/Level.gd"
+}, {
+"base": "KinematicBody2D",
+"class": "SlashableBody",
+"language": "GDScript",
+"path": "res://src/actors/slashableObject.gd"
 } ]
 _global_script_class_icons={
-"Level": ""
+"Level": "",
+"SlashableBody": ""
 }
 
 [application]

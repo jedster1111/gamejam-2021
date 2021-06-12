@@ -1,13 +1,9 @@
-extends KinematicBody2D
+extends SlashableBody
 
-#onready var player_detector = get_node("playerDetector")
 signal shoot(bullet, velocity, location)
 
-var BloodSplatter = preload ("res://src/actors/BloodSplatter.tscn")
 const Bullet = preload("res://src/actors/Bullet.tscn")
 
-var max_lives = 1
-var lives = 1
 
 var target = null
 var hit_pos
@@ -20,24 +16,6 @@ func _process(_delta):
 	update()
 	if target:
 		aim()
-
-
-func hit(hit_direction: Vector2):
-	var blood = BloodSplatter.instance()
-	blood.position += hit_direction.normalized() * 40
-	blood.rotation = hit_direction.angle()
-	blood.scale *= 1.5
-	add_child(blood)
-	blood.stop()
-	blood.play("default")
-	yield(blood, "animation_finished")
-	max_lives -= 1
-
-	if max_lives <= 0:
-		die()
-
-func die():
-	queue_free()
 
 func alert():
 	is_alert = true
