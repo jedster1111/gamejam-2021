@@ -76,5 +76,4 @@ tile_data = PoolIntArray( 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 
 
 [node name="Bird" parent="." instance=ExtResource( 5 )]
 position = Vector2( -64.1809, 324.091 )
-
 [connection signal="shoot" from="Enemy" to="." method="_on_Enemy_shoot"]
