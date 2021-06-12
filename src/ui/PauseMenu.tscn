@@ -4,6 +4,7 @@
 [ext_resource path="res://src/ui/PauseMenu.gd" type="Script" id=2]
 
 [node name="PauseScreen" type="CanvasLayer"]
+pause_mode = 2
 script = ExtResource( 2 )
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
