@@ -7,6 +7,7 @@ signal combo_broken
 
 var PauseMenu = preload("res://src/ui/PauseMenu.tscn")
 var LevelMenu = preload("res://src/ui/LevelComplete.tscn")
+var GameOverMenu = preload("res://src/ui/GameOver.tscn")
 
 const combo_timeout = 3
 
@@ -19,6 +20,8 @@ func _ready():
 
 	if $Finish:
 		$Finish.connect("levelcomplete", self, "create_level_menu")
+	if $Player:
+		$Player.connect("player_died", self, "create_game_over_menu")
 
 	player.connect("player_dashed", self, "increase_combo")
 
@@ -43,6 +46,12 @@ func create_level_menu():
 	var level_menu = LevelMenu.instance()
 	#level_menu.connect("pause_menu_closed", self, "close_pause_menu")
 	add_child(level_menu)
+
+func create_game_over_menu():
+	get_tree().paused = true
+	var game_over_menu = GameOverMenu.instance()
+	#level_menu.connect("pause_menu_closed", self, "close_pause_menu")
+	add_child(game_over_menu)
 
 func increase_combo():
 	emit_signal("combo_increased")

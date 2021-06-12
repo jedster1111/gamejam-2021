@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 func _on_Replay_pressed():
-	get_tree().reload_current_scene()
+	var _reloaded = get_tree().reload_current_scene()
 
 
 func _on_Quit_pressed():

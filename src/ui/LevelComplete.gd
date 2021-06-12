@@ -2,14 +2,11 @@ extends CanvasLayer
 
 
 func _on_NextLevel_pressed():
-	print("Replaying this scene: ", str(int(get_tree().current_scene.name) + 1))
-	#var _success = get_tree().change_scene("res://src/ui/" + get_tree().current_scene.name + ".tscn")
-	get_tree().change_scene("res://src/levels/level-" + str(int(get_tree().current_scene.name) + 1) + ".tscn")
+	var _change = get_tree().change_scene("res://src/levels/level-" + str(int(get_tree().current_scene.name) + 1) + ".tscn")
 
 
 func _on_Replay_pressed():
-	get_tree().reload_current_scene()
+	var _replay = get_tree().reload_current_scene()
 
 func _on_Quit_pressed():
-	print("quit")
 	var _success = get_tree().change_scene("res://src/ui/StartScreen.tscn")

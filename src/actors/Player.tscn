@@ -139,6 +139,7 @@ position = Vector2( -2.38419e-07, 4.76837e-07 )
 scale = Vector2( 1.42725, 1.42725 )
 frames = SubResource( 20 )
 animation = "idle"
+frame = 2
 playing = true
 
 [node name="BulletDetector" type="Area2D" parent="."]
