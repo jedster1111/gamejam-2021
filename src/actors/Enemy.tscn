@@ -30,6 +30,7 @@ shape = SubResource( 2 )
 
 [node name="Fire_Rate" type="Timer" parent="."]
 autostart = true
+
 [connection signal="body_entered" from="Visibility" to="." method="_on_Visibility_body_entered"]
 [connection signal="body_exited" from="Visibility" to="." method="_on_Visibility_body_exited"]
 [connection signal="timeout" from="Fire_Rate" to="." method="_on_Fire_Rate_timeout"]
