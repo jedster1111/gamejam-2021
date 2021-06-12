@@ -16,8 +16,17 @@ var direction = Vector2(1,0)
 
 var alert = false
 
+func _ready():
+	$AnimatedSprite.play("idle")
+
+
+
 func _process(delta):
 	update()
+
+
+	direction = Vector2()
+	velocity = Vector2()
 
 
 func hit(hit_direction: Vector2):
@@ -41,5 +50,6 @@ func _physics_process(delta):
 
 func _on_PlayerDetector_body_entered(body):
 	alert = true
+	$AnimatedSprite.play("flying")
 	if scary_spot == null:
 		scary_spot = body.position
