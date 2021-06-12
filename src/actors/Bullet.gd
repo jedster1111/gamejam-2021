@@ -1,8 +1,6 @@
 extends KinematicBody2D
 
 var velocity = Vector2(1000, 0)
-const MAX_BOUNCE = 3
-var bounce = 0
 
 func _ready():
 	rotation =  velocity.angle()

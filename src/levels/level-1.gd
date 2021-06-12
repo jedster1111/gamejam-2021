@@ -8,3 +8,7 @@ func _process(_delta):
 		add_child(PauseMenu.instance())
 
 
+
+
+func _on_Enemy_shoot(bullet):
+	add_child(bullet)
