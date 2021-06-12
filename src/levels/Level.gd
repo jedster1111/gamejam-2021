@@ -3,13 +3,20 @@ extends Node2D
 class_name Level
 
 signal combo_increased
+signal combo_broken
 
 var PauseMenu = preload("res://src/ui/PauseMenu.tscn")
 var LevelMenu = preload("res://src/ui/LevelComplete.tscn")
 
+const combo_timeout = 3
+
 onready var player = get_node("Player")
+onready var combo_timer = Timer.new()
 
 func _ready():
+	combo_timer.connect("timeout", self, "break_combo")
+	add_child(combo_timer)
+
 	if $Finish:
 		$Finish.connect("levelcomplete", self, "create_level_menu")
 
@@ -39,6 +46,10 @@ func create_level_menu():
 
 func increase_combo():
 	emit_signal("combo_increased")
+	combo_timer.start(combo_timeout)
+
+func break_combo():
+	emit_signal("combo_broken")
 
 func _on_Enemy_shoot(bullet):
   add_child(bullet)

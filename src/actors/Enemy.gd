@@ -65,7 +65,6 @@ func aim():
 			$coin.self_modulate.r = 1.0
 			return
 		if can_shootROF and can_start_shooting:
-			print("shooting")
 			shoot()
 			
 
