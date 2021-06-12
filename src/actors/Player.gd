@@ -9,7 +9,7 @@ var direction = Vector2(0,0)
 var start_pos = position
 var current_wall_collision = null
 
-enum Modes {IDLE, DASHING, FOLLOW_THROUGH}
+enum Modes {IDLE, DASHING, FOLLOW_THROUGH, DEAD}
 var mode = Modes.IDLE
 
 func is_dash_away_from_wall(dash_direction: Vector2, wall_normal: Vector2):
@@ -38,6 +38,8 @@ func _physics_process(_delta):
 			if follow_through_distance > max_follow_through_distance:
 				end_follow_through()
 			else: move_player()
+		
+		
 
 func move_player():
 	rotation = velocity.angle()
@@ -80,3 +82,13 @@ func start_follow_through(enemy_position):
 
 func end_follow_through():
 	start_idle()
+
+func start_death():
+	$AnimatedSprite.play("slash")
+
+func _on_BulletDetector_body_entered(body):
+	if mode == Modes.DASHING or mode == Modes.FOLLOW_THROUGH:
+		start_follow_through(position)
+	else:
+		mode = Modes.DEAD
+		start_death()
