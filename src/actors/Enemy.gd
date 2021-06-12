@@ -40,7 +40,7 @@ func die():
 func aim():
 	var space_state = get_world_2d().direct_space_state
 	var result = space_state.intersect_ray(position, target.position,
-					[self], collision_mask)
+					[self], $Visibility.collision_mask)
 	if result:
 		hit_pos = result.position
 		if result.collider.name == 'Player':
