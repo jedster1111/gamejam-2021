@@ -30,8 +30,12 @@ func _set_up_level():
 	level.connect("combo_broken", self, "on_combo_broken")
 	level.connect("next_level_selected", self, "_on_next_level_selected")
 	level.connect("points_earned", self, "score_calc")
+	level.connect("combo_timer_updated", self, "change_combo_timer_bar")
 	reset_state()
 	add_child(level)
+
+func change_combo_timer_bar(value):
+	inGameUi.set_combo_timer(value)
 
 func on_combo_increased():
 	combo += 1

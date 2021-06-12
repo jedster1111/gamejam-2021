@@ -6,6 +6,7 @@ signal combo_increased
 signal combo_broken
 signal next_level_selected
 signal points_earned
+signal combo_timer_updated(perc)
 
 
 var PauseMenu = preload("res://src/ui/PauseMenu.tscn")
@@ -22,7 +23,7 @@ onready var combo_timer = Timer.new()
 func _ready():
 	combo_timer.connect("timeout", self, "break_combo")
 	add_child(combo_timer)
-
+	combo_timer.one_shot = true
 	if finish:
 		finish.connect("level_complete", self, "create_level_menu")
 
@@ -48,6 +49,11 @@ func _handle_player_mode_changed(mode):
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		create_pause_menu()
+		
+func _physics_process(delta):
+	var perc = combo_timer.time_left/combo_timer.wait_time * 100
+	print(perc)
+	emit_signal("combo_timer_updated", perc)
 
 func _exit_tree():
 	get_tree().paused = false
