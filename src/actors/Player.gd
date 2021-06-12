@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal player_dashed
+signal player_died
 
 export var max_dash_distance = 200
 export var max_follow_through_distance = 150
@@ -92,6 +93,7 @@ func end_follow_through():
 func start_death():
 	mode = Modes.DEAD
 	$AnimatedSprite.play("death")
+	emit_signal("player_died")
 
 func _on_BulletDetector_body_entered(body):
 	print("bullet detected")

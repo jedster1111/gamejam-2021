@@ -16,7 +16,7 @@ var can_shootROF = true
 var is_alert = false
 var can_start_shooting = false
 
-func _process(delta):
+func _process(_delta):
 	update()
 	if target:
 		aim()

@@ -14,7 +14,3 @@ position = Vector2( -16.5764, 106.223 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( -187.822, 201.36 )
-max_dash_distance = null
-max_follow_through_distance = null
-speed = null
-follow_through_speed = null
