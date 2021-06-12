@@ -12,12 +12,15 @@ var lives = 1
 var target = null
 var hit_pos
 var laser_color = Color(1.0, 0.0, 0.0)
-var can_shoot = true
+var can_shootROF = true
+var is_alert = false
+var can_start_shooting = false
 
 func _process(delta):
 	update()
 	if target:
 		aim()
+
 
 func hit(hit_direction: Vector2):
 	var blood = BloodSplatter.instance()
@@ -36,6 +39,15 @@ func hit(hit_direction: Vector2):
 func die():
 	queue_free()
 
+func alert():
+	is_alert = true
+	if $AlertTimer.is_stopped():
+		$AlertTimer.start()
+		can_start_shooting = false
+	print($AlertTimer.get_time_left())
+	yield($AlertTimer, "timeout")
+	can_start_shooting = true
+	print("timed out")
 
 func aim():
 	var space_state = get_world_2d().direct_space_state
@@ -43,15 +55,20 @@ func aim():
 					[self], $Visibility.collision_mask)
 	if result:
 		if result.collider.name == 'Player':
-			# Debugging purposes
+			if is_alert == false:
+				print("I could not see you before but now i can")
+				alert()
 			$coin.self_modulate.r = 0.2
 			rotation = (target.position - position).angle()
 		else:
-			# Debugging purposes
+			is_alert = false
 			$coin.self_modulate.r = 1.0
 			return
-		if can_shoot:
+		if can_shootROF and can_start_shooting:
+			print("shooting")
 			shoot()
+			
+
 
 func _draw():
 	if target:
@@ -63,7 +80,7 @@ func shoot():
 	bullet.velocity = Vector2.UP.rotated(rotation + PI/2) * 1000
 	bullet.rotation = bullet.velocity.angle()
 	bullet.position = position + bullet.velocity.normalized() * 70
-	can_shoot = false
+	can_shootROF = false
 	
 	emit_signal("shoot", bullet)
 
@@ -81,4 +98,4 @@ func _on_Visibility_body_exited(body):
 
 
 func _on_Fire_Rate_timeout():
-	can_shoot = true
+	can_shootROF = true
