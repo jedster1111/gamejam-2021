@@ -15,7 +15,6 @@ _global_script_classes=[ {
 "path": "res://src/levels/Level.gd"
 } ]
 _global_script_class_icons={
-
 "Level": ""
 }
 
