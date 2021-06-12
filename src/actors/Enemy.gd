@@ -44,10 +44,8 @@ func alert():
 	if $AlertTimer.is_stopped():
 		$AlertTimer.start()
 		can_start_shooting = false
-	print($AlertTimer.get_time_left())
 	yield($AlertTimer, "timeout")
 	can_start_shooting = true
-	print("timed out")
 
 func aim():
 	var space_state = get_world_2d().direct_space_state
@@ -56,7 +54,6 @@ func aim():
 	if result:
 		if result.collider.name == 'Player':
 			if is_alert == false:
-				print("I could not see you before but now i can")
 				alert()
 			$coin.self_modulate.r = 0.2
 			rotation = (target.position - position).angle()

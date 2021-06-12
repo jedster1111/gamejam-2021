@@ -3,7 +3,6 @@ extends CanvasLayer
 signal next_level_selected
 
 func _on_NextLevel_pressed():
-	print("Clicked next level")
 	emit_signal("next_level_selected")
 
 

@@ -24,8 +24,18 @@ func _ready():
 	if finish:
 		finish.connect("level_complete", self, "create_level_menu")
 
-	player.connect("player_died", self, "create_game_over_menu")
-	player.connect("player_dashed", self, "increase_combo")
+	player.connect("player_mode_changed", self, "_handle_player_mode_changed")
+
+func _handle_player_mode_changed(mode):
+	print("player mode changed", mode)
+	match mode:
+		player.Modes.FOLLOW_THROUGH:
+			increase_combo()
+		player.Modes.IDLE:
+			break_combo()
+		player.Modes.DEAD:
+			create_game_over_menu()
+		
 
 func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
@@ -63,7 +73,6 @@ func break_combo():
 	emit_signal("combo_broken")
 
 func _handle_level_changed():
-	print("Level handle level change")
 	emit_signal("next_level_selected")
 
 func _on_Enemy_shoot(bullet):

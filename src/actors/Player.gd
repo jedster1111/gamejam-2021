@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
-signal player_dashed
-signal player_died
+signal player_mode_changed(mode)
 
 export var max_dash_distance = 200
 export var max_follow_through_distance = 150
@@ -69,6 +68,7 @@ func start_idle():
 	direction = Vector2()
 	velocity = Vector2()
 
+	emit_signal("player_mode_changed", Modes.IDLE)
 
 func start_dash(dash_to_position):
 	$AnimatedSprite.play("slash")
@@ -85,7 +85,7 @@ func start_follow_through(enemy_position):
 	mode = Modes.FOLLOW_THROUGH
 	start_pos = enemy_position
 	velocity = direction * follow_through_speed
-	emit_signal("player_dashed")
+	emit_signal("player_mode_changed", Modes.FOLLOW_THROUGH)
 
 func end_follow_through():
 	start_idle()
@@ -93,10 +93,9 @@ func end_follow_through():
 func start_death():
 	mode = Modes.DEAD
 	$AnimatedSprite.play("death")
-	emit_signal("player_died")
+	emit_signal("player_mode_changed", Modes.DEAD)
 
 func _on_BulletDetector_body_entered(body):
-	print("bullet detected")
 	if mode == Modes.DASHING or mode == Modes.FOLLOW_THROUGH:
 		start_follow_through(position)
 	elif mode == Modes.IDLE:
