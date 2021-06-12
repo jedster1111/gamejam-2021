@@ -42,16 +42,20 @@ func aim():
 	var result = space_state.intersect_ray(position, target.position,
 					[self], $Visibility.collision_mask)
 	if result:
-		hit_pos = result.position
 		if result.collider.name == 'Player':
+			# Debugging purposes
+			$coin.self_modulate.r = 0.2
 			rotation = (target.position - position).angle()
+		else:
+			# Debugging purposes
+			$coin.self_modulate.r = 1.0
+			return
 		if can_shoot:
 			shoot()
 
 func _draw():
 	if target:
 		draw_line(Vector2(), (target.position - position).rotated(-rotation), laser_color)
-		draw_circle((hit_pos - position).rotated(-rotation), 5, laser_color)
 
 func shoot():
 	print("shooting")
@@ -67,17 +71,11 @@ func _on_Visibility_body_entered(body):
 	if target:
 		return
 	target = body
-	# Debugging purposes
-	$coin.self_modulate.r = 0.2
-
 
 
 func _on_Visibility_body_exited(body):
 	if body == target:
 		target = null
-	# Debugging purposes
-	$coin.self_modulate.r = 1.0
-
 
 
 func _on_Fire_Rate_timeout():
