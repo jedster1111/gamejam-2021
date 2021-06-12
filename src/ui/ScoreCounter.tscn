@@ -1,0 +1,48 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/fonts/lemon_milk/LEMONMILK-Regular.otf" type="DynamicFontData" id=1]
+[ext_resource path="res://src/ui/ScoreCounter.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 20
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+size = 30
+font_data = ExtResource( 1 )
+
+[node name="ScoreCounter" type="MarginContainer"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 20.0
+margin_bottom = 20.0
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+margin_right = 102.0
+margin_bottom = 41.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CenterContainer"]
+margin_right = 102.0
+margin_bottom = 41.0
+custom_constants/separation = 10
+
+[node name="ScoreLabel" type="Label" parent="CenterContainer/HBoxContainer"]
+margin_top = 7.0
+margin_right = 70.0
+margin_bottom = 34.0
+custom_fonts/font = SubResource( 1 )
+text = "Score"
+
+[node name="ScoreValue" type="Label" parent="CenterContainer/HBoxContainer"]
+margin_left = 80.0
+margin_right = 102.0
+margin_bottom = 41.0
+custom_fonts/font = SubResource( 2 )
+text = "0"

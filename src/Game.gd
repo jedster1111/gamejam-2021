@@ -1,6 +1,6 @@
 extends Node2D
 
-var combo = 0
+var combo = 1
 var score = 0
 
 onready var inGameUi = get_node("InGameUI")
@@ -38,12 +38,15 @@ func on_combo_increased():
 	inGameUi.set_combo(combo)
 
 func on_combo_broken():
-	combo = 0
+	combo = 1
 	inGameUi.set_combo(combo)
 
 func score_calc(points):
 	score += combo * points
+	inGameUi.set_score(score)
 
 func reset_state():
-	combo = 0
+	combo = 1
 	score = 0
+	inGameUi.set_combo(combo)
+	inGameUi.set_score(score)
