@@ -14,17 +14,17 @@ var GameOverMenu = preload("res://src/ui/GameOver.tscn")
 const combo_timeout = 3
 
 onready var player = get_node("Player")
+onready var finish = get_node("Finish")
 onready var combo_timer = Timer.new()
 
 func _ready():
 	combo_timer.connect("timeout", self, "break_combo")
 	add_child(combo_timer)
 
-	if $Finish:
-		$Finish.connect("levelcomplete", self, "create_level_menu")
-	if $Player:
-		$Player.connect("player_died", self, "create_game_over_menu")
+	if finish:
+		finish.connect("level_complete", self, "create_level_menu")
 
+	player.connect("player_died", self, "create_game_over_menu")
 	player.connect("player_dashed", self, "increase_combo")
 
 func _process(_delta):
@@ -63,6 +63,7 @@ func break_combo():
 	emit_signal("combo_broken")
 
 func _handle_level_changed():
+	print("Level handle level change")
 	emit_signal("next_level_selected")
 
 func _on_Enemy_shoot(bullet):

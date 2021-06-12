@@ -27,7 +27,7 @@ func _remove_old_level():
 func _set_up_level():
 	level.connect("combo_increased", self, "on_combo_increased")
 	level.connect("combo_broken", self, "on_combo_broken")
-	level.connect("next_level_selected", self, "on_level_changed")
+	level.connect("next_level_selected", self, "_on_next_level_selected")
 	reset_state()
 	add_child(level)
 
