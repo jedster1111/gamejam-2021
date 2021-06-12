@@ -4,6 +4,7 @@ extends KinematicBody2D
 signal shoot(bullet, velocity, location)
 
 var BloodSplatter = preload ("res://src/actors/BloodSplatter.tscn")
+const Bullet = preload("res://src/actors/Bullet.tscn")
 
 var max_lives = 1
 var lives = 1
@@ -11,6 +12,7 @@ var lives = 1
 var target = null
 var hit_pos
 var laser_color = Color(1.0, 0.0, 0.0)
+var can_shoot = true
 
 func _process(delta):
 	update()
@@ -43,29 +45,28 @@ func aim():
 		hit_pos = result.position
 		if result.collider.name == 'Player':
 			rotation = (target.position - position).angle()
-
+		if can_shoot:
+			shoot()
 
 func _draw():
-	print("target: ", target)
 	if target:
-		print("drawing",target.name)
 		draw_line(Vector2(), (target.position - position).rotated(-rotation), laser_color)
 		draw_circle((hit_pos - position).rotated(-rotation), 5, laser_color)
 
 func shoot():
-	if Input.is_action_just_pressed("shoot"):
-		var bullet = Bullet.instance()
-		bullet.velocity = Vector2.UP.rotated(rotation + PI/2) * 1000
-		bullet.rotation = bullet.velocity.angle()
-		bullet.position = position + bullet.velocity.normalized() * 70
-
-		emit_signal("shoot", bullet)
+	print("shooting")
+	var bullet = Bullet.instance()
+	bullet.velocity = Vector2.UP.rotated(rotation + PI/2) * 1000
+	bullet.rotation = bullet.velocity.angle()
+	bullet.position = position + bullet.velocity.normalized() * 70
+	can_shoot = false
+	
+	emit_signal("shoot", bullet)
 
 func _on_Visibility_body_entered(body):
 	if target:
 		return
 	target = body
-	print(target.name)
 	# Debugging purposes
 	$coin.self_modulate.r = 0.2
 
@@ -77,3 +78,7 @@ func _on_Visibility_body_exited(body):
 	# Debugging purposes
 	$coin.self_modulate.r = 1.0
 
+
+
+func _on_Fire_Rate_timeout():
+	can_shoot = true
