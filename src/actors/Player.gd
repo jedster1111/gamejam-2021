@@ -7,13 +7,21 @@ export var follow_through_speed = 4000
 var velocity = Vector2(0,0)
 var direction = Vector2(0,0)
 var start_pos = position
+var current_wall_collision = null
 
 enum Modes {IDLE, DASHING, FOLLOW_THROUGH}
 var mode = Modes.IDLE
 
+func is_dash_away_from_wall(dash_direction: Vector2, wall_normal: Vector2):
+	return dash_direction.dot(wall_normal) > 0
+
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("dash") and mode != Modes.DASHING:
-		start_dash(get_global_mouse_position())
+		var mouse_position = get_global_mouse_position()
+		var dash_direction = position.direction_to(mouse_position)
+		if current_wall_collision and !is_dash_away_from_wall(dash_direction, current_wall_collision.normal): return
+			
+		start_dash(mouse_position)
 
 	Engine.time_scale = 1
 	match mode:
@@ -31,8 +39,13 @@ func _physics_process(_delta):
 			move_player()
 
 func move_player():
+	rotation = velocity.angle()
 	var collision = move_and_collide(velocity * get_process_delta_time())
-	if collision: start_idle()
+	if collision and collision != current_wall_collision:
+		start_idle()
+		rotation = collision.normal.angle()
+
+	current_wall_collision = collision
 
 func _on_EnemyDetector_body_entered(enemy):
 	if(mode == Modes.DASHING or mode == Modes.FOLLOW_THROUGH):
