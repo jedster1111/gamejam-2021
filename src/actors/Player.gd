@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 signal player_mode_changed(mode)
 
-onready var dash_audio = get_node("DashAudio")
+onready var attack_audio = get_node("AttackAudio")
 onready var animated_sprite = get_node("AnimatedSprite")
 
 export var max_dash_distance = 200
@@ -75,7 +75,6 @@ func start_idle():
 
 func start_dash(dash_to_position):
 	animated_sprite.play("slash")
-	dash_audio.play()
 
 	mode = Modes.DASHING
 	start_pos = position
@@ -86,6 +85,7 @@ func end_dash():
 	start_idle()
 
 func start_follow_through(enemy_position):
+	attack_audio.play()
 	mode = Modes.FOLLOW_THROUGH
 	start_pos = enemy_position
 	velocity = direction * follow_through_speed

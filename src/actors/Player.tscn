@@ -140,6 +140,7 @@ position = Vector2( -2.38419e-07, 4.76837e-07 )
 scale = Vector2( 1.42725, 1.42725 )
 frames = SubResource( 20 )
 animation = "idle"
+frame = 1
 playing = true
 
 [node name="BulletDetector" type="Area2D" parent="."]
@@ -149,7 +150,7 @@ collision_mask = 8
 [node name="BulletDetector" type="CollisionShape2D" parent="BulletDetector"]
 shape = SubResource( 21 )
 
-[node name="DashAudio" type="AudioStreamPlayer2D" parent="."]
+[node name="AttackAudio" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 5 )
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]
 [connection signal="body_entered" from="BulletDetector" to="." method="_on_BulletDetector_body_entered"]
