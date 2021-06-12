@@ -12,10 +12,17 @@ var current_wall_collision = null
 enum Modes {IDLE, DASHING, FOLLOW_THROUGH, DEAD}
 var mode = Modes.IDLE
 
+func _ready():
+	$AnimatedSprite.play("idle")
+
 func is_dash_away_from_wall(dash_direction: Vector2, wall_normal: Vector2):
 	return dash_direction.dot(wall_normal) > 0
 
 func _physics_process(_delta):
+	Engine.time_scale = 1
+
+	if mode == Modes.DEAD: return
+
 	if Input.is_action_just_pressed("dash") and mode != Modes.DASHING:
 		var mouse_position = get_global_mouse_position()
 		var dash_direction = position.direction_to(mouse_position)
@@ -23,7 +30,6 @@ func _physics_process(_delta):
 			
 		start_dash(mouse_position)
 
-	Engine.time_scale = 1
 	match mode:
 		Modes.DASHING:
 			var dash_distance = (position - start_pos).length()
@@ -37,9 +43,7 @@ func _physics_process(_delta):
 			var follow_through_distance = (position - start_pos).length()
 			if follow_through_distance > max_follow_through_distance:
 				end_follow_through()
-			else: move_player()
-		
-		
+			else: move_player()		
 
 func move_player():
 	rotation = velocity.angle()
@@ -58,7 +62,7 @@ func _on_EnemyDetector_body_entered(enemy):
 func start_idle():
 	$AnimatedSprite.play("idle")
 	mode = Modes.IDLE
-	set_collision_layer_bit( 9, true )
+
 	direction = Vector2()
 	velocity = Vector2()
 
@@ -66,7 +70,6 @@ func start_idle():
 func start_dash(dash_to_position):
 	$AnimatedSprite.play("slash")
 	mode = Modes.DASHING
-	set_collision_layer_bit( 9, false )
 	start_pos = position
 	direction = (dash_to_position - position).normalized()
 	velocity = speed * direction
@@ -84,11 +87,13 @@ func end_follow_through():
 	start_idle()
 
 func start_death():
-	$AnimatedSprite.play("slash")
+	mode = Modes.DEAD
+	$AnimatedSprite.play("death")
 
 func _on_BulletDetector_body_entered(body):
+	print("bullet detected")
 	if mode == Modes.DASHING or mode == Modes.FOLLOW_THROUGH:
 		start_follow_through(position)
-	else:
-		mode = Modes.DEAD
+	elif mode == Modes.IDLE:
 		start_death()
+		body.queue_free()
