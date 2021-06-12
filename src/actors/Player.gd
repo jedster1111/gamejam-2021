@@ -76,4 +76,3 @@ func start_follow_through(enemy_position):
 
 func end_follow_through():
 	start_idle()
-
