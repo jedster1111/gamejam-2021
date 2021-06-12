@@ -26,17 +26,17 @@ func _physics_process(_delta):
 	Engine.time_scale = 1
 	match mode:
 		Modes.DASHING:
+			move_player()
 			var dash_distance = (position - start_pos).length()
 			if dash_distance > max_dash_distance:
 				end_dash()
-			move_player()
 
 		Modes.FOLLOW_THROUGH:
 			Engine.time_scale = 0.1
+			move_player()
 			var follow_through_distance = (position - start_pos).length()
 			if follow_through_distance > max_follow_through_distance:
 				end_follow_through()
-			move_player()
 
 func move_player():
 	rotation = velocity.angle()
