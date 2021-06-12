@@ -11,6 +11,7 @@ var laser_color = Color(1.0, 0.0, 0.0)
 var can_shootROF = true
 var is_alert = false
 var can_start_shooting = false
+var can_see_player = false
 
 func _process(_delta):
 	update()
@@ -31,11 +32,13 @@ func aim():
 					[self], $Visibility.collision_mask)
 	if result:
 		if result.collider.name == 'Player':
+			can_see_player = true
 			if is_alert == false:
 				alert()
 			$coin.self_modulate.r = 0.2
 			rotation = (target.position - position).angle()
 		else:
+			can_see_player = false
 			is_alert = false
 			$coin.self_modulate.r = 1.0
 			return
@@ -45,7 +48,7 @@ func aim():
 
 
 func _draw():
-	if target:
+	if target and can_see_player:
 		draw_line(Vector2(), (target.position - position).rotated(-rotation), laser_color)
 
 func shoot():
