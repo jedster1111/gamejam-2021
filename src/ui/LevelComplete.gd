@@ -1,8 +1,9 @@
 extends CanvasLayer
 
+signal next_level_selected
 
 func _on_NextLevel_pressed():
-	var _change = get_tree().change_scene("res://src/levels/level-" + str(int(get_tree().current_scene.name) + 1) + ".tscn")
+	emit_signal("next_level_selected")
 
 
 func _on_Replay_pressed():

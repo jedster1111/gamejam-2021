@@ -4,6 +4,8 @@ class_name Level
 
 signal combo_increased
 signal combo_broken
+signal next_level_selected
+
 
 var PauseMenu = preload("res://src/ui/PauseMenu.tscn")
 var LevelMenu = preload("res://src/ui/LevelComplete.tscn")
@@ -44,7 +46,7 @@ func close_pause_menu():
 func create_level_menu():
 	get_tree().paused = true
 	var level_menu = LevelMenu.instance()
-	#level_menu.connect("pause_menu_closed", self, "close_pause_menu")
+	level_menu.connect("next_level_selected", self, "_handle_level_changed")
 	add_child(level_menu)
 
 func create_game_over_menu():
@@ -59,6 +61,9 @@ func increase_combo():
 
 func break_combo():
 	emit_signal("combo_broken")
+
+func _handle_level_changed():
+	emit_signal("next_level_selected")
 
 func _on_Enemy_shoot(bullet):
   add_child(bullet)
