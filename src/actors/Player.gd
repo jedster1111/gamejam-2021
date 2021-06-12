@@ -1,5 +1,7 @@
 extends KinematicBody2D
 
+signal player_dashed
+
 export var max_dash_distance = 200
 export var max_follow_through_distance = 150
 export var speed = 4000
@@ -82,6 +84,7 @@ func start_follow_through(enemy_position):
 	mode = Modes.FOLLOW_THROUGH
 	start_pos = enemy_position
 	velocity = direction * follow_through_speed
+	emit_signal("player_dashed")
 
 func end_follow_through():
 	start_idle()

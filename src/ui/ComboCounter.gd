@@ -1,9 +1,6 @@
 extends MarginContainer
 
-var combo = 0
+onready var combo_value = get_node("CenterContainer/HBoxContainer/ComboValue")
 
-func add_combo():
-	combo += 1
-
-func reset_combo():
-	combo = 0
+func set_combo(new_value):
+	combo_value.text = String(new_value)

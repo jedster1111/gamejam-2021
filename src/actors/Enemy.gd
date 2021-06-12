@@ -58,7 +58,6 @@ func _draw():
 		draw_line(Vector2(), (target.position - position).rotated(-rotation), laser_color)
 
 func shoot():
-	print("shooting")
 	var bullet = Bullet.instance()
 	bullet.velocity = Vector2.UP.rotated(rotation + PI/2) * 1000
 	bullet.rotation = bullet.velocity.angle()
@@ -68,7 +67,6 @@ func shoot():
 	emit_signal("shoot", bullet)
 
 func _on_Visibility_body_entered(body):
-	print(body.name)
 	if target:
 		return
 	if body.name == "Player":
