@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/actors/Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/actors/Enemy.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/levels/Justin_test_scene.gd" type="Script" id=3]
 [ext_resource path="res://block.png" type="Texture" id=4]
 [ext_resource path="res://src/actors/Bullet.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/actors/Finish.tscn" type="PackedScene" id=6]
 
 [sub_resource type="ConvexPolygonShape2D" id=1]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
@@ -32,6 +33,9 @@ script = ExtResource( 3 )
 
 [node name="Enemy" parent="." instance=ExtResource( 2 )]
 position = Vector2( 208, 80 )
+
+[node name="Finish" parent="Enemy" instance=ExtResource( 6 )]
+position = Vector2( 0, -200 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 144, 472 )

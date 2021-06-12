@@ -43,6 +43,11 @@ pause={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Bullet"
+<<<<<<< HEAD
+2d_physics/layer_5="FinishZone"
+2d_physics/layer_10="Idle_Player"
+=======
+>>>>>>> d3735df431adbf50804e5466c892397635f0c977
 
 [rendering]
 
