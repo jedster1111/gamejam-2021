@@ -26,17 +26,18 @@ func _physics_process(_delta):
 	Engine.time_scale = 1
 	match mode:
 		Modes.DASHING:
-			move_player()
 			var dash_distance = (position - start_pos).length()
 			if dash_distance > max_dash_distance:
 				end_dash()
+			else: move_player()
+
 
 		Modes.FOLLOW_THROUGH:
 			Engine.time_scale = 0.1
-			move_player()
 			var follow_through_distance = (position - start_pos).length()
 			if follow_through_distance > max_follow_through_distance:
 				end_follow_through()
+			else: move_player()
 
 func move_player():
 	rotation = velocity.angle()
@@ -48,8 +49,9 @@ func move_player():
 	current_wall_collision = collision
 
 func _on_EnemyDetector_body_entered(enemy):
-	start_follow_through(enemy.position)
-	enemy.hit()
+	if mode == Modes.DASHING or mode == Modes.FOLLOW_THROUGH:
+		start_follow_through(position)
+		enemy.hit(velocity)
 
 func start_idle():
 	$AnimatedSprite.play("idle")
@@ -67,9 +69,9 @@ func start_dash(dash_to_position):
 func end_dash():
 	start_idle()
 
-func start_follow_through(follow_through_start_position):
+func start_follow_through(enemy_position):
 	mode = Modes.FOLLOW_THROUGH
-	start_pos = follow_through_start_position
+	start_pos = enemy_position
 	velocity = direction * follow_through_speed
 
 func end_follow_through():
