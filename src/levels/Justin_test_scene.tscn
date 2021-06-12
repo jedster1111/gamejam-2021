@@ -33,10 +33,10 @@ script = ExtResource( 3 )
 position = Vector2( 208, 80 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 136, 264 )
+position = Vector2( 144, 440 )
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource( 2 )
 format = 1
-tile_data = PoolIntArray( 131074, 0, 0, 131075, 0, 0, 131076, 0, 0 )
+tile_data = PoolIntArray( 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0 )
 [connection signal="shoot" from="Enemy" to="." method="_on_Enemy_shoot"]

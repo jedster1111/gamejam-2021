@@ -10,5 +10,7 @@ func _physics_process(_delta):
 	
 func move_bullet():
 	var collision = move_and_collide(velocity * get_physics_process_delta_time())
+	if collision:
+		queue_free()
 
 	return collision

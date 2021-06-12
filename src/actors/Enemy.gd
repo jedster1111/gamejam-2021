@@ -68,9 +68,11 @@ func shoot():
 	emit_signal("shoot", bullet)
 
 func _on_Visibility_body_entered(body):
+	print(body.name)
 	if target:
 		return
-	target = body
+	if body.name == "Player":
+		target = body
 
 
 func _on_Visibility_body_exited(body):

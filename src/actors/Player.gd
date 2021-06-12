@@ -56,16 +56,20 @@ func _on_EnemyDetector_body_entered(enemy):
 func start_idle():
 	$AnimatedSprite.play("idle")
 	mode = Modes.IDLE
+	set_collision_layer_bit( 9, true )
 	direction = Vector2()
 	velocity = Vector2()
+
 
 func start_dash(dash_to_position):
 	$AnimatedSprite.play("slash")
 	mode = Modes.DASHING
+	set_collision_layer_bit( 9, false )
 	start_pos = position
 	direction = (dash_to_position - position).normalized()
 	velocity = speed * direction
 	
+
 func end_dash():
 	start_idle()
 

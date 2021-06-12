@@ -15,14 +15,13 @@ _global_script_classes=[ {
 "path": "res://src/levels/Level.gd"
 } ]
 _global_script_class_icons={
-
 "Level": ""
 }
 
 [application]
 
 config/name="GameJam-2021"
-run/main_scene="res://src/ui/StartScreen.tscn"
+run/main_scene="res://src/levels/level-1.tscn"
 config/icon="res://icon.png"
 
 [input]
@@ -44,6 +43,7 @@ pause={
 2d_physics/layer_2="Player"
 2d_physics/layer_3="Enemy"
 2d_physics/layer_4="Bullet"
+2d_physics/layer_10="Idle_Player"
 
 [rendering]
 
