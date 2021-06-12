@@ -48,9 +48,8 @@ func move_player():
 	current_wall_collision = collision
 
 func _on_EnemyDetector_body_entered(enemy):
-	if(mode == Modes.DASHING or mode == Modes.FOLLOW_THROUGH):
-		start_follow_through(enemy.position)
-		enemy.hit()
+	start_follow_through(enemy.position)
+	enemy.hit()
 
 func start_idle():
 	mode = Modes.IDLE
