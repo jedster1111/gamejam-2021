@@ -8,7 +8,7 @@ func _on_NextLevel_pressed():
 
 
 func _on_Replay_pressed():
-	pass
+	get_tree().reload_current_scene()
 
 func _on_Quit_pressed():
 	print("quit")
