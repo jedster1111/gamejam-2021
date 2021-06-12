@@ -5,6 +5,7 @@ class_name Level
 signal combo_increased
 signal combo_broken
 signal next_level_selected
+signal points_earned
 
 
 var PauseMenu = preload("res://src/ui/PauseMenu.tscn")
@@ -15,6 +16,7 @@ const combo_timeout = 3
 
 onready var player = get_node("Player")
 onready var finish = get_node("Finish")
+onready var slashable_nodes = get_tree().get_nodes_in_group("slashable")
 onready var combo_timer = Timer.new()
 
 func _ready():
@@ -25,9 +27,14 @@ func _ready():
 		finish.connect("level_complete", self, "create_level_menu")
 
 	player.connect("player_mode_changed", self, "_handle_player_mode_changed")
+	for slashable in slashable_nodes:
+		slashable.connect("points_earned", self, "on_point_earned")
+	
+func on_point_earned(points):
+	emit_signal("points_earned", points)
 
 func _handle_player_mode_changed(mode):
-	print("player mode changed", mode)
+	#print("player mode changed", mode)
 	match mode:
 		player.Modes.FOLLOW_THROUGH:
 			increase_combo()

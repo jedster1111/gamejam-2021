@@ -71,6 +71,6 @@ shape = SubResource( 2 )
 scale = Vector2( 0.579415, 0.618105 )
 frames = SubResource( 8 )
 animation = "idle"
+frame = 1
 playing = true
-
 [connection signal="body_entered" from="PlayerDetector" to="." method="_on_PlayerDetector_body_entered"]

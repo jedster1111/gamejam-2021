@@ -1,12 +1,13 @@
 extends Node2D
 
 var combo = 0
+var score = 0
 
 onready var inGameUi = get_node("InGameUI")
 
 
 var current_level = 0
-var levels = ["level-1", "level-2"]
+var levels = ["level-1", "Justin_test_scene"]
 var level
 
 func _ready():
@@ -28,6 +29,7 @@ func _set_up_level():
 	level.connect("combo_increased", self, "on_combo_increased")
 	level.connect("combo_broken", self, "on_combo_broken")
 	level.connect("next_level_selected", self, "_on_next_level_selected")
+	level.connect("points_earned", self, "score_calc")
 	reset_state()
 	add_child(level)
 
@@ -39,5 +41,9 @@ func on_combo_broken():
 	combo = 0
 	inGameUi.set_combo(combo)
 
+func score_calc(points):
+	score += combo * points
+
 func reset_state():
 	combo = 0
+	score = 0

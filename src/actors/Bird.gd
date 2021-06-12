@@ -1,11 +1,13 @@
-extends KinematicBody2D
+extends SlashableBody
 
 #onready var player_detector = get_node("playerDetector")
 
 
 
-var max_lives = 1
-var lives = 1
+#var max_lives = 1
+#var lives = 1
+
+
 
 var scary_spot = null
 var hit_pos
@@ -18,7 +20,7 @@ var alert = false
 
 func _ready():
 	$AnimatedSprite.play("idle")
-
+	points = 500
 
 
 func _process(delta):
@@ -29,15 +31,15 @@ func _process(delta):
 	velocity = Vector2()
 
 
-func hit(hit_direction: Vector2):
+#func hit(hit_direction: Vector2):
 	
-	max_lives -= 1
+#	max_lives -= 1
 
-	if max_lives <= 0:
-		die()
+#	if max_lives <= 0:
+#		die()
 
-func die():
-	queue_free()
+#func die():
+#	queue_free()
 
 
 func _physics_process(delta):

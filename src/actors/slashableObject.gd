@@ -1,10 +1,16 @@
 extends KinematicBody2D
 class_name SlashableBody
 
+signal points_earned(points)
+
 var BloodSplatter = preload ("res://src/actors/BloodSplatter.tscn")
 
-var max_lives = 1
+var points = 100
+var max_lives  = 1
 var lives = 1
+
+func _ready():
+	self.add_to_group("slashable")
 
 func hit(hit_direction: Vector2):
 	var blood = BloodSplatter.instance()
@@ -21,4 +27,5 @@ func hit(hit_direction: Vector2):
 		die()
 
 func die():
+	emit_signal("points_earned", points)
 	queue_free()
