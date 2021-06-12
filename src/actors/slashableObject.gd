@@ -13,6 +13,9 @@ func _ready():
 	self.add_to_group("slashable")
 
 func hit(hit_direction: Vector2):
+	emit_signal("points_earned", points)
+	max_lives -= 1
+
 	var blood = BloodSplatter.instance()
 	blood.position += hit_direction.normalized() * 40
 	blood.rotation = hit_direction.angle()
@@ -21,11 +24,9 @@ func hit(hit_direction: Vector2):
 	blood.stop()
 	blood.play("default")
 	yield(blood, "animation_finished")
-	max_lives -= 1
 
 	if max_lives <= 0:
 		die()
 
 func die():
-	emit_signal("points_earned", points)
 	queue_free()
