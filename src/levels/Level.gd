@@ -12,7 +12,7 @@ var PauseMenu = preload("res://src/ui/PauseMenu.tscn")
 var LevelMenu = preload("res://src/ui/LevelComplete.tscn")
 var GameOverMenu = preload("res://src/ui/GameOver.tscn")
 
-const combo_timeout = 3
+var current_combo = 1
 
 onready var player = get_node("Player")
 onready var finish = get_node("Finish")
@@ -27,6 +27,7 @@ func _ready():
 		finish.connect("level_complete", self, "create_level_menu")
 
 	player.connect("player_mode_changed", self, "_handle_player_mode_changed")
+	
 	for slashable in slashable_nodes:
 		slashable.connect("points_earned", self, "on_point_earned")
 	
@@ -38,8 +39,8 @@ func _handle_player_mode_changed(mode):
 	match mode:
 		player.Modes.FOLLOW_THROUGH:
 			increase_combo()
-		player.Modes.IDLE:
-			break_combo()
+		#player.Modes.IDLE:
+		#	break_combo()
 		player.Modes.DEAD:
 			create_game_over_menu()
 		
@@ -74,8 +75,8 @@ func create_game_over_menu():
 
 func increase_combo():
 	emit_signal("combo_increased")
-	combo_timer.start(combo_timeout)
-
+	combo_timer.start(1/current_combo + 0.5)
+	
 func break_combo():
 	emit_signal("combo_broken")
 

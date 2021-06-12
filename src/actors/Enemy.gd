@@ -41,7 +41,7 @@ func aim():
 			return
 		if can_shootROF and can_start_shooting:
 			shoot()
-			
+
 
 
 func _draw():

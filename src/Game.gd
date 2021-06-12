@@ -36,10 +36,12 @@ func _set_up_level():
 func on_combo_increased():
 	combo += 1
 	inGameUi.set_combo(combo)
+	level.current_combo = combo
 
 func on_combo_broken():
 	combo = 1
 	inGameUi.set_combo(combo)
+	level.current_combo = combo
 
 func score_calc(points):
 	score += combo * points
@@ -50,3 +52,4 @@ func reset_state():
 	score = 0
 	inGameUi.set_combo(combo)
 	inGameUi.set_score(score)
+	level.current_combo = combo
