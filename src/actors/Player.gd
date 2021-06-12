@@ -2,6 +2,9 @@ extends KinematicBody2D
 
 signal player_mode_changed(mode)
 
+onready var dash_audio = get_node("DashAudio")
+onready var animated_sprite = get_node("AnimatedSprite")
+
 export var max_dash_distance = 200
 export var max_follow_through_distance = 150
 export var speed = 4000
@@ -15,7 +18,7 @@ enum Modes {IDLE, DASHING, FOLLOW_THROUGH, DEAD}
 var mode = Modes.IDLE
 
 func _ready():
-	$AnimatedSprite.play("idle")
+	animated_sprite.play("idle")
 
 func is_dash_away_from_wall(dash_direction: Vector2, wall_normal: Vector2):
 	return dash_direction.dot(wall_normal) > 0
@@ -62,7 +65,7 @@ func _on_EnemyDetector_body_entered(enemy):
 		enemy.hit(velocity)
 
 func start_idle():
-	$AnimatedSprite.play("idle")
+	animated_sprite.play("idle")
 	mode = Modes.IDLE
 
 	direction = Vector2()
@@ -71,12 +74,13 @@ func start_idle():
 	emit_signal("player_mode_changed", Modes.IDLE)
 
 func start_dash(dash_to_position):
-	$AnimatedSprite.play("slash")
+	animated_sprite.play("slash")
+	dash_audio.play()
+
 	mode = Modes.DASHING
 	start_pos = position
 	direction = (dash_to_position - position).normalized()
 	velocity = speed * direction
-	
 
 func end_dash():
 	start_idle()
@@ -92,7 +96,7 @@ func end_follow_through():
 
 func start_death():
 	mode = Modes.DEAD
-	$AnimatedSprite.play("death")
+	animated_sprite.play("death")
 	emit_signal("player_mode_changed", Modes.DEAD)
 
 func _on_BulletDetector_body_entered(body):

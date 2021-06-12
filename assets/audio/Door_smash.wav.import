@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Door_smash.wav-9b1ea88aa9071de39319ba5652155358.sample"
+
+[deps]
+
+source_file="res://assets/audio/Door_smash.wav"
+dest_files=[ "res://.import/Door_smash.wav-9b1ea88aa9071de39319ba5652155358.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

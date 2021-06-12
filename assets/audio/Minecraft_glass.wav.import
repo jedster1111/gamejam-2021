@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/Minecraft_glass.wav-1f7b56f343da004c6ba0a051ac8721d2.sample"
+
+[deps]
+
+source_file="res://assets/audio/Minecraft_glass.wav"
+dest_files=[ "res://.import/Minecraft_glass.wav-1f7b56f343da004c6ba0a051ac8721d2.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

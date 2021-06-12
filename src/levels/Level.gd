@@ -36,7 +36,6 @@ func on_point_earned(points):
 	emit_signal("points_earned", points)
 
 func _handle_player_mode_changed(mode):
-	#print("player mode changed", mode)
 	match mode:
 		player.Modes.FOLLOW_THROUGH:
 			increase_combo()
@@ -52,7 +51,6 @@ func _process(_delta):
 		
 func _physics_process(delta):
 	var perc = combo_timer.time_left/combo_timer.wait_time * 100
-	print(perc)
 	emit_signal("combo_timer_updated", perc)
 
 func _exit_tree():
