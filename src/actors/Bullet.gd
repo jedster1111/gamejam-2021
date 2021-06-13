@@ -1,6 +1,6 @@
 extends SlashableBody
 
-var velocity = Vector2(1000, 0)
+var velocity = Vector2(100, 0)
 
 func _ready():
 	rotation =  velocity.angle()
