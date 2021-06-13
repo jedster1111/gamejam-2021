@@ -36,18 +36,6 @@ func _process(_delta):
 	direction = Vector2()
 	velocity = Vector2()
 
-
-#func hit(hit_direction: Vector2):
-	
-#	max_lives -= 1
-
-#	if max_lives <= 0:
-#		die()
-
-#func die():
-#	queue_free()
-
-
 func _physics_process(_delta):
 	
 	if alert == true and scary_spot:
