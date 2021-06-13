@@ -8,7 +8,7 @@ var levels_map = {
   "JumpingBuilding": "Building Jump",
   "M1": "Crow Graveyard",
   "M2": "Building Jump 2",
-  "HighWayChase": "Highway Chase"
+  "RoadChase": "Road Chase"
 }
 
 var levels = levels_map.keys()

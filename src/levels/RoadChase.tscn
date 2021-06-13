@@ -1,0 +1,74 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://src/levels/Level.gd" type="Script" id=1]
+[ext_resource path="res://src/levels/platforms/LongRoad.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/actors/Start.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/actors/Enemy.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/actors/Finish.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/levels/vehicles/BlackCar.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/levels/vehicles/BlueBus.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/levels/vehicles/RedCar.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/levels/vehicles/Truck.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/levels/platforms/GrassPlatform.tscn" type="PackedScene" id=10]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+load_path = "res://.import/tileset.png-3c625a847ece11c15fab5bb17369eade.stex"
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="LongRoad" parent="." instance=ExtResource( 2 )]
+
+[node name="LongRoad2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 236.979, 822.847 )
+scale = Vector2( 1, -1 )
+
+[node name="Start" parent="." instance=ExtResource( 3 )]
+position = Vector2( 205.878, 284.317 )
+
+[node name="Finish" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1686.22, 343.57 )
+
+[node name="CarBlack" parent="." instance=ExtResource( 6 )]
+position = Vector2( 433.332, 289.439 )
+
+[node name="CarBlack2" parent="." instance=ExtResource( 6 )]
+position = Vector2( 1460.38, 344.204 )
+texture = SubResource( 1 )
+
+[node name="BlueBus" parent="." instance=ExtResource( 7 )]
+position = Vector2( 262.594, 291.571 )
+
+[node name="BlueBus2" parent="." instance=ExtResource( 7 )]
+position = Vector2( 1618.53, 347.694 )
+
+[node name="CarRed2" parent="." instance=ExtResource( 8 )]
+position = Vector2( 543.156, 460.924 )
+
+[node name="CarRed3" parent="." instance=ExtResource( 8 )]
+position = Vector2( 966.881, 294.819 )
+
+[node name="Truck front" parent="." instance=ExtResource( 9 )]
+position = Vector2( 754.949, 532.429 )
+
+[node name="GrassPlatform" parent="." instance=ExtResource( 10 )]
+position = Vector2( 849.319, 413.326 )
+
+[node name="Enemy" parent="." instance=ExtResource( 4 )]
+position = Vector2( 327.409, 287.38 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 4 )]
+position = Vector2( 542.922, 459.678 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 4 )]
+position = Vector2( 688.28, 527.587 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 4 )]
+position = Vector2( 824.66, 527.026 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 4 )]
+position = Vector2( 964.667, 413.889 )
+
+[node name="Enemy6" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1463.9, 344.837 )
