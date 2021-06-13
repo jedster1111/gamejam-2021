@@ -7,16 +7,18 @@ var ninja_grade = "S+"
 var end_score = 0
 
 onready var inGameUi = get_node("InGameUI")
-
+onready var themeTune = get_node("ThemeTune")
 
 var current_level = 0
-var levels = ["tutorialLevel", "birdIntro", "level-1", "Justin_test_scene", "JumpingBuilding", "M1"]
+var levels = global.levels
 var level
 
 func _ready():
+	current_level = global.selected_starting_level
 	_load_level()
 	calculate_scores()
 	set_child_values()
+	themeTune.play()
 
 func _on_next_level_selected():
 	current_level += 1
