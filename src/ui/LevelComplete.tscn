@@ -1,8 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://src/ui/LevelComplete.gd" type="Script" id=1]
+[ext_resource path="res://src/ui/ScoreCounter.tscn" type="PackedScene" id=2]
 
-[node name="CanvasLayer" type="CanvasLayer"]
+[node name="LevelComplete" type="CanvasLayer"]
 pause_mode = 2
 script = ExtResource( 1 )
 
@@ -19,25 +20,32 @@ margin_bottom = 600.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
 margin_left = 439.0
-margin_top = 266.0
+margin_top = 243.0
 margin_right = 585.0
-margin_bottom = 334.0
+margin_bottom = 356.0
+
+[node name="ScoreCounter" parent="MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource( 2 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 146.0
+margin_bottom = 41.0
 
 [node name="NextLevel" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
+margin_top = 45.0
 margin_right = 146.0
-margin_bottom = 20.0
+margin_bottom = 65.0
 text = "Next Level"
 
 [node name="Replay" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
-margin_top = 24.0
+margin_top = 69.0
 margin_right = 146.0
-margin_bottom = 44.0
+margin_bottom = 89.0
 text = "Replay"
 
 [node name="Quit" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
-margin_top = 48.0
+margin_top = 93.0
 margin_right = 146.0
-margin_bottom = 68.0
+margin_bottom = 113.0
 text = "Return to Main Menu"
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/NextLevel" to="." method="_on_NextLevel_pressed"]
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Replay" to="." method="_on_Replay_pressed"]

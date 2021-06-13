@@ -8,6 +8,8 @@ signal next_level_selected
 signal points_earned
 signal combo_timer_updated(perc)
 signal level_restarted
+signal game_paused
+signal game_unpaused
 
 
 var PauseMenu = preload("res://src/ui/PauseMenu.tscn")
@@ -16,6 +18,7 @@ var GameOverMenu = preload("res://src/ui/GameOver.tscn")
 var Player = preload("res://src/actors/Player.tscn")
 
 var current_combo = 1
+var current_score = 0
 var is_last_level = false
 
 onready var start_position = Vector2()
@@ -73,30 +76,35 @@ func _physics_process(_delta):
 	emit_signal("combo_timer_updated", perc)
 
 func _exit_tree():
-	get_tree().paused = false
+	emit_signal("game_unpaused")
+
 
 func create_pause_menu():
-	get_tree().paused = true
 	var pause_menu = PauseMenu.instance()
 	pause_menu.connect("pause_menu_closed", self, "close_pause_menu")
 	add_child(pause_menu)
+	emit_signal("game_paused")
+
 
 func close_pause_menu():
-	get_tree().paused = false
+	emit_signal("game_unpaused")
 	
 func create_level_complete_menu():
-	get_tree().paused = true
 	var level_complete = LevelComplete.instance()
+
 	level_complete.is_last_level = is_last_level
+	level_complete.score = current_score
+
 	level_complete.connect("next_level_selected", self, "_handle_level_changed")
 	level_complete.connect("level_restarted", self, "_handle_level_restarted")
 	add_child(level_complete)
+	emit_signal("game_paused")
 
 func create_game_over_menu():
-	get_tree().paused = true
 	var game_over_menu = GameOverMenu.instance()
 	game_over_menu.connect("level_restarted", self, "_handle_level_restarted")
 	add_child(game_over_menu)
+	emit_signal("game_paused")
 
 func increase_combo():
 	emit_signal("combo_increased")
