@@ -55,13 +55,6 @@ func _physics_process(_delta):
 				end_follow_through()
 			else: move_player()
 
-func fall_to_death():
-	fall_animation.play("Falling")
-	mode = Modes.DEAD
-	yield(fall_animation, "animation_finished")
-	
-	emit_signal("player_mode_changed", Modes.DEAD)
-
 func move_player():
 	rotation = velocity.angle()
 	var collision = move_and_collide(velocity * get_process_delta_time())
@@ -124,6 +117,15 @@ func end_follow_through():
 func start_death():
 	mode = Modes.DEAD
 	animated_sprite.play("death")
+	yield(animated_sprite, "animation_finished")
+
+	emit_signal("player_mode_changed", Modes.DEAD)
+
+func fall_to_death():
+	fall_animation.play("Falling")
+	mode = Modes.DEAD
+	yield(fall_animation, "animation_finished")
+	
 	emit_signal("player_mode_changed", Modes.DEAD)
 
 func _on_BulletDetector_body_entered(body):
