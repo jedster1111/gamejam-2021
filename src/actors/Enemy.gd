@@ -56,7 +56,7 @@ func aim():
 			is_alert = false
 			$Enemy.self_modulate.r = 1.0
 			return
-		if can_shootROF and can_start_shooting:
+		if can_shootROF and can_start_shooting and lives > 0:
 			shoot()
 
 
@@ -74,9 +74,6 @@ func shoot():
 	ShootAudio.play(0.1)
 	
 	emit_signal("shoot", bullet)
-
-
-	
 
 func _on_Visibility_body_entered(body):
 	if target:
