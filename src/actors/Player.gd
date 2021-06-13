@@ -7,6 +7,7 @@ onready var animated_sprite = get_node("AnimatedSprite")
 onready var coyote_timer = get_node("CoyoteTimer")
 onready var fall_animation = get_node("FallAnimation")
 onready var camera = get_node("Camera2D")
+onready var death_audio = get_node("DeathAudio")
 
 export var max_dash_distance = 200
 export var max_follow_through_distance = 150
@@ -54,13 +55,6 @@ func _physics_process(_delta):
 			if follow_through_distance > max_follow_through_distance:
 				end_follow_through()
 			else: move_player()
-
-func fall_to_death():
-	fall_animation.play("Falling")
-	mode = Modes.DEAD
-	yield(fall_animation, "animation_finished")
-	
-	emit_signal("player_mode_changed", Modes.DEAD)
 
 func move_player():
 	rotation = velocity.angle()
@@ -123,7 +117,18 @@ func end_follow_through():
 
 func start_death():
 	mode = Modes.DEAD
+	death_audio.play()
 	animated_sprite.play("death")
+	yield(animated_sprite, "animation_finished")
+
+	emit_signal("player_mode_changed", Modes.DEAD)
+
+func fall_to_death():
+	mode = Modes.DEAD
+	fall_animation.play("Falling")
+	death_audio.play()
+	yield(fall_animation, "animation_finished")
+	
 	emit_signal("player_mode_changed", Modes.DEAD)
 
 func _on_BulletDetector_body_entered(body):

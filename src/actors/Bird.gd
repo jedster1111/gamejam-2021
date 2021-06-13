@@ -22,8 +22,12 @@ func _ready():
 	$AnimatedSprite.play("idle")
 	points = 500
 
-func _load_destruction_scene():
-	DestructionScene = load("res://src/actors/BloodSplatter.tscn")
+func get_destruction_scene():
+	return load("res://src/actors/BloodSplatter.tscn")
+
+func get_destruction_sound():
+	audio_start_point = 0.2
+	return load("res://assets/audio/blood_splatter.wav")
 
 func _process(_delta):
 	update()
@@ -31,18 +35,6 @@ func _process(_delta):
 
 	direction = Vector2()
 	velocity = Vector2()
-
-
-#func hit(hit_direction: Vector2):
-	
-#	max_lives -= 1
-
-#	if max_lives <= 0:
-#		die()
-
-#func die():
-#	queue_free()
-
 
 func _physics_process(_delta):
 	

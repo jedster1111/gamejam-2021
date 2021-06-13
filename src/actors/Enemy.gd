@@ -2,8 +2,9 @@ extends SlashableBody
 
 signal shoot(bullet, velocity, location)
 
-const Bullet = preload("res://src/actors/Bullet.tscn")
+onready var ShootAudio = get_node("ShootAudio")
 
+const Bullet = preload("res://src/actors/Bullet.tscn")
 
 var target = null
 var hit_pos
@@ -21,8 +22,12 @@ func _process(_delta):
 	if target:
 		aim()
 
-func _load_destruction_scene():
-	DestructionScene = load("res://src/actors/BloodSplatter.tscn")
+func get_destruction_scene():
+	return load("res://src/actors/BloodSplatter.tscn")
+
+func get_destruction_sound():
+	return load("res://assets/audio/Death_" + String(random_generator.randi_range(2, 8)) + ".wav")
+
 
 func alert():
 	is_alert = true
@@ -63,8 +68,12 @@ func shoot():
 	bullet.rotation = bullet.velocity.angle()
 	bullet.position = position + bullet.velocity.normalized() * 70
 	can_shootROF = false
+	ShootAudio.play(0.1)
 	
 	emit_signal("shoot", bullet)
+
+
+	
 
 func _on_Visibility_body_entered(body):
 	if target:
