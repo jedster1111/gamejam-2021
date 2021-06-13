@@ -73,6 +73,7 @@ func _on_EnemyDetector_body_entered(enemy):
 		enemy.hit(velocity)
 
 func _on_FloorDetector_area_entered(_body):
+	print("Entering ground")
 	coyote_timer.stop()
 	current_floor = Floors.GROUND
 
