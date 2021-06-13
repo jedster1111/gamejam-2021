@@ -17,7 +17,7 @@ var can_see_player = false
 
 func _ready():
 	add_to_group("enemies")
-	FireRate.wait_time = rand_range(0.7,0.9)
+	FireRate.wait_time = rand_range(0.5,0.7)
 	$AlertTimer.wait_time = rand_range(1.5, 2)
 
 func _process(_delta):
@@ -67,7 +67,7 @@ func _draw():
 
 func shoot():
 	var bullet = Bullet.instance()
-	bullet.velocity = Vector2.UP.rotated(rotation + PI/2) * 1000
+	bullet.velocity = Vector2.UP.rotated(rotation + PI/2) * 500
 	bullet.rotation = bullet.velocity.angle()
 	bullet.position = position + bullet.velocity.normalized() * 70
 	can_shootROF = false
