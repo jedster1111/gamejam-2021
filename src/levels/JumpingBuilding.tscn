@@ -1,0 +1,650 @@
+[gd_scene load_steps=17 format=2]
+
+[ext_resource path="res://src/levels/Level.gd" type="Script" id=1]
+[ext_resource path="res://assets/environment/tileset.png" type="Texture" id=2]
+[ext_resource path="res://src/actors/Enemy.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/actors/Finish.tscn" type="PackedScene" id=4]
+[ext_resource path="res://src/actors/Bird.tscn" type="PackedScene" id=5]
+[ext_resource path="res://src/actors/Glass.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/actors/Start.tscn" type="PackedScene" id=7]
+[ext_resource path="res://src/levels/FloorArea.tscn" type="PackedScene" id=8]
+[ext_resource path="res://assets/environment/roads2W.png" type="Texture" id=9]
+
+[sub_resource type="StreamTexture" id=7]
+flags = 4
+load_path = "res://.import/roads2W.png-b0aeb2e1ac7bad5355cbfed6619527ff.stex"
+
+[sub_resource type="ConvexPolygonShape2D" id=1]
+points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
+
+[sub_resource type="TileSet" id=2]
+0/name = "tileset.png 0"
+0/texture = ExtResource( 2 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 128, 0, 32, 32 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [ {
+"autotile_coord": Vector2( 0, 0 ),
+"one_way": false,
+"one_way_margin": 1.0,
+"shape": SubResource( 1 ),
+"shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
+} ]
+0/z_index = 0
+
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 84, 240 )
+
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 100, 240 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 96, 80 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 144, 240 )
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="Grass" type="Sprite" parent="."]
+modulate = Color( 0.784314, 0.886275, 0.411765, 1 )
+position = Vector2( 731.125, 357.375 )
+scale = Vector2( 206.975, 116.125 )
+texture = ExtResource( 2 )
+region_enabled = true
+region_rect = Rect2( 30, 20, 10, 10 )
+
+[node name="roads2W" type="Sprite" parent="."]
+position = Vector2( 676, 304 )
+scale = Vector2( 2.66, 2.4 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 460, 70, 50, 50 )
+
+[node name="roads2W2" type="Sprite" parent="."]
+position = Vector2( 665.688, 501 )
+scale = Vector2( 2.6525, 3.425 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 200, 0, 50, 80 )
+
+[node name="roads2W3" type="Sprite" parent="."]
+position = Vector2( 665.422, 102 )
+scale = Vector2( 2.66312, 3.55 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 200, 0, 50, 80 )
+
+[node name="roads2W6" type="Sprite" parent="."]
+position = Vector2( 1056, 121 )
+scale = Vector2( 2.66312, 3.075 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 200, 0, 50, 80 )
+
+[node name="roads2W8" type="Sprite" parent="."]
+position = Vector2( 302, 466 )
+rotation = 1.5708
+scale = Vector2( 3.05826, 3.47481 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 190, 60 )
+
+[node name="roads2W7" type="Sprite" parent="."]
+position = Vector2( 1056, 491 )
+scale = Vector2( 2.66312, 3.175 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 200, 0, 50, 80 )
+
+[node name="roads2W9" type="Sprite" parent="."]
+position = Vector2( 298.214, 50 )
+scale = Vector2( 3.51145, 3.175 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 200, 0, 50, 80 )
+
+[node name="roads2W4" type="Sprite" parent="."]
+position = Vector2( 838, 309.225 )
+rotation = 1.5708
+scale = Vector2( 2.40842, 2.4 )
+texture = ExtResource( 9 )
+region_enabled = true
+region_rect = Rect2( 200, 0, 50, 80 )
+
+[node name="roads2W5" type="Sprite" parent="."]
+position = Vector2( 1011.87, 304 )
+scale = Vector2( 2.60421, 2.4 )
+texture = SubResource( 7 )
+region_enabled = true
+region_rect = Rect2( 370, 70, 60, 50 )
+
+[node name="Building1" type="Node2D" parent="."]
+
+[node name="Glass6" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 64, 544 )
+
+[node name="Glass5" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 128, 544 )
+
+[node name="Glass4" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 176, 544 )
+scale = Vector2( 0.5, 1 )
+
+[node name="Glass" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 64, 60 )
+
+[node name="Glass7" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 32, 88 )
+rotation = 1.5708
+
+[node name="Glass8" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 32, 152 )
+rotation = 1.5708
+
+[node name="Glass10" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 32, 216 )
+rotation = 1.5708
+
+[node name="Glass9" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 32, 280 )
+rotation = 1.5708
+
+[node name="Glass14" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 32, 344 )
+rotation = 1.5708
+
+[node name="Glass13" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 32, 408 )
+rotation = 1.5708
+
+[node name="Glass12" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 32, 472 )
+rotation = 1.5708
+
+[node name="Glass15" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 32, 516 )
+rotation = 1.5708
+
+[node name="Glass2" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 128, 60 )
+
+[node name="Glass3" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 176, 60 )
+scale = Vector2( 0.5, 1 )
+
+[node name="Glass24" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 32, 88 )
+rotation = 1.5708
+
+[node name="Glass23" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 32, 152 )
+rotation = 1.5708
+
+[node name="Glass22" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 32, 216 )
+rotation = 1.5708
+
+[node name="Glass21" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 32, 280 )
+rotation = 1.5708
+
+[node name="Glass20" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 32, 344 )
+rotation = 1.5708
+
+[node name="Glass19" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 32, 408 )
+rotation = 1.5708
+
+[node name="Glass18" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 32, 472 )
+rotation = 1.5708
+
+[node name="Glass17" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 32, 516 )
+rotation = 1.5708
+
+[node name="Glass32" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 192, 88 )
+rotation = 1.5708
+
+[node name="Glass31" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 192, 152 )
+rotation = 1.5708
+
+[node name="Glass30" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 192, 216 )
+rotation = 1.5708
+
+[node name="Glass29" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 192, 280 )
+rotation = 1.5708
+
+[node name="Glass28" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 192, 344 )
+rotation = 1.5708
+
+[node name="Glass27" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 192, 408 )
+rotation = 1.5708
+
+[node name="Glass26" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 192, 472 )
+rotation = 1.5708
+
+[node name="Glass25" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 192, 516 )
+rotation = 1.5708
+
+[node name="Glass16" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 128, 60 )
+
+[node name="Glass11" parent="Building1" instance=ExtResource( 6 )]
+position = Vector2( 176, 60 )
+scale = Vector2( 0.5, 1 )
+
+[node name="FloorArea" parent="Building1" instance=ExtResource( 8 )]
+position = Vector2( 128, 288 )
+
+[node name="Floor" type="TileMap" parent="Building1/FloorArea"]
+modulate = Color( 0.952941, 0.835294, 0.647059, 1 )
+tile_set = SubResource( 2 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -393219, 0, 0, -393218, 0, 0, -393217, 0, 0, -458752, 0, 0, -458751, 0, 0, -327683, 0, 0, -327682, 0, 0, -327681, 0, 0, -393216, 0, 0, -393215, 0, 0, -262147, 0, 0, -262146, 0, 0, -262145, 0, 0, -327680, 0, 0, -327679, 0, 0, -196611, 0, 0, -196610, 0, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 0, 0, -196608, 0, 0, -196607, 0, 0, -65539, 0, 0, -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 262141, 0, 0, 262142, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 393213, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 458749, 0, 0, 458750, 0, 0, 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 524285, 0, 0, 524286, 0, 0, 524287, 0, 0, 458752, 0, 0, 458753, 0, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Building1/FloorArea"]
+position = Vector2( -16, 16 )
+shape = SubResource( 3 )
+
+[node name="Building2" type="Node2D" parent="."]
+
+[node name="Glass40" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 412, 88 )
+rotation = 1.5708
+
+[node name="Glass39" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 412, 152 )
+rotation = 1.5708
+
+[node name="Glass38" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 412, 216 )
+rotation = 1.5708
+
+[node name="Glass37" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 412, 280 )
+rotation = 1.5708
+
+[node name="Glass36" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 412, 344 )
+rotation = 1.5708
+
+[node name="Glass35" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 412, 408 )
+rotation = 1.5708
+
+[node name="Glass34" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 412, 472 )
+rotation = 1.5708
+
+[node name="Glass33" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 412, 516 )
+rotation = 1.5708
+
+[node name="Glass48" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 608, 88 )
+rotation = 1.5708
+
+[node name="Glass47" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 608, 152 )
+rotation = 1.5708
+
+[node name="Glass46" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 608, 216 )
+rotation = 1.5708
+
+[node name="Glass45" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 608, 280 )
+rotation = 1.5708
+
+[node name="Glass44" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 608, 344 )
+rotation = 1.5708
+
+[node name="Glass43" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 608, 408 )
+rotation = 1.5708
+
+[node name="Glass42" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 608, 472 )
+rotation = 1.5708
+
+[node name="Glass41" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 608, 516 )
+rotation = 1.5708
+
+[node name="Glass9" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 448, 60 )
+
+[node name="Glass8" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 512, 60 )
+
+[node name="Glass7" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 576, 60 )
+
+[node name="Glass12" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 448, 544 )
+
+[node name="Glass11" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 512, 544 )
+
+[node name="Glass10" parent="Building2" instance=ExtResource( 6 )]
+position = Vector2( 576, 544 )
+
+[node name="FloorArea2" parent="Building2" instance=ExtResource( 8 )]
+position = Vector2( 512, 288 )
+
+[node name="Floor" type="TileMap" parent="Building2/FloorArea2"]
+modulate = Color( 0.952941, 0.835294, 0.647059, 1 )
+tile_set = SubResource( 2 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -393219, 0, 0, -393218, 0, 0, -393217, 0, 0, -458752, 0, 0, -458751, 0, 0, -458750, 0, 0, -327683, 0, 0, -327682, 0, 0, -327681, 0, 0, -393216, 0, 0, -393215, 0, 0, -393214, 0, 0, -262147, 0, 0, -262146, 0, 0, -262145, 0, 0, -327680, 0, 0, -327679, 0, 0, -327678, 0, 0, -196611, 0, 0, -196610, 0, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 0, 0, -196608, 0, 0, -196607, 0, 0, -196606, 0, 0, -65539, 0, 0, -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 262141, 0, 0, 262142, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 393213, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 458749, 0, 0, 458750, 0, 0, 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 524285, 0, 0, 524286, 0, 0, 524287, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Building2/FloorArea2"]
+position = Vector2( -4, 16 )
+shape = SubResource( 4 )
+
+[node name="Building3" type="Node2D" parent="."]
+
+[node name="Glass21" parent="Building3" instance=ExtResource( 6 )]
+position = Vector2( 768, 224 )
+
+[node name="Glass20" parent="Building3" instance=ExtResource( 6 )]
+position = Vector2( 832, 224 )
+
+[node name="Glass19" parent="Building3" instance=ExtResource( 6 )]
+position = Vector2( 896, 224 )
+
+[node name="Glass24" parent="Building3" instance=ExtResource( 6 )]
+position = Vector2( 768, 64 )
+
+[node name="Glass25" parent="Building3" instance=ExtResource( 6 )]
+position = Vector2( 736, 92 )
+rotation = 1.5708
+
+[node name="Glass26" parent="Building3" instance=ExtResource( 6 )]
+position = Vector2( 736, 156 )
+rotation = 1.5708
+
+[node name="Glass27" parent="Building3" instance=ExtResource( 6 )]
+position = Vector2( 736, 207.722 )
+rotation = 1.5708
+scale = Vector2( 0.62, 1 )
+
+[node name="Glass30" parent="Building3" instance=ExtResource( 6 )]
+position = Vector2( 928, 92 )
+rotation = 1.5708
+
+[node name="Glass29" parent="Building3" instance=ExtResource( 6 )]
+position = Vector2( 928, 156 )
+rotation = 1.5708
+
+[node name="Glass28" parent="Building3" instance=ExtResource( 6 )]
+position = Vector2( 928, 207.722 )
+rotation = 1.5708
+scale = Vector2( 0.62, 1 )
+
+[node name="Glass23" parent="Building3" instance=ExtResource( 6 )]
+position = Vector2( 832, 64 )
+
+[node name="Glass22" parent="Building3" instance=ExtResource( 6 )]
+position = Vector2( 896, 64 )
+
+[node name="FloorArea4" parent="Building3" instance=ExtResource( 8 )]
+position = Vector2( 832, 144 )
+
+[node name="Floor" type="TileMap" parent="Building3/FloorArea4"]
+modulate = Color( 0.952941, 0.835294, 0.647059, 1 )
+position = Vector2( 6.10352e-05, -16 )
+tile_set = SubResource( 2 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -65539, 0, 0, -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Building3/FloorArea4"]
+position = Vector2( 6.10352e-05, 0 )
+shape = SubResource( 6 )
+
+[node name="Building4" type="Node2D" parent="."]
+
+[node name="Glass33" parent="Building4" instance=ExtResource( 6 )]
+position = Vector2( 932, 412 )
+rotation = 1.5708
+
+[node name="Glass32" parent="Building4" instance=ExtResource( 6 )]
+position = Vector2( 932, 476 )
+rotation = 1.5708
+
+[node name="Glass31" parent="Building4" instance=ExtResource( 6 )]
+position = Vector2( 932, 527.722 )
+rotation = 1.5708
+scale = Vector2( 0.62, 1 )
+
+[node name="Glass36" parent="Building4" instance=ExtResource( 6 )]
+position = Vector2( 736, 412 )
+rotation = 1.5708
+
+[node name="Glass35" parent="Building4" instance=ExtResource( 6 )]
+position = Vector2( 736, 476 )
+rotation = 1.5708
+
+[node name="Glass34" parent="Building4" instance=ExtResource( 6 )]
+position = Vector2( 736, 527.722 )
+rotation = 1.5708
+scale = Vector2( 0.62, 1 )
+
+[node name="Glass15" parent="Building4" instance=ExtResource( 6 )]
+position = Vector2( 768, 544 )
+
+[node name="Glass14" parent="Building4" instance=ExtResource( 6 )]
+position = Vector2( 832, 544 )
+
+[node name="Glass13" parent="Building4" instance=ExtResource( 6 )]
+position = Vector2( 896, 544 )
+
+[node name="Glass18" parent="Building4" instance=ExtResource( 6 )]
+position = Vector2( 768, 384 )
+
+[node name="Glass17" parent="Building4" instance=ExtResource( 6 )]
+position = Vector2( 832, 384 )
+
+[node name="Glass16" parent="Building4" instance=ExtResource( 6 )]
+position = Vector2( 896, 384 )
+
+[node name="FloorArea5" parent="Building4" instance=ExtResource( 8 )]
+position = Vector2( 832, 464 )
+
+[node name="Floor" type="TileMap" parent="Building4/FloorArea5"]
+modulate = Color( 0.952941, 0.835294, 0.647059, 1 )
+position = Vector2( 6.10352e-05, -16 )
+tile_set = SubResource( 2 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -65539, 0, 0, -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Building4/FloorArea5"]
+position = Vector2( 6.10352e-05, 0 )
+shape = SubResource( 6 )
+
+[node name="Building5" type="Node2D" parent="."]
+
+[node name="Glass56" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1180, 88 )
+rotation = 1.5708
+
+[node name="Glass55" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1180, 152 )
+rotation = 1.5708
+
+[node name="Glass54" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1180, 216 )
+rotation = 1.5708
+
+[node name="Glass53" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1180, 280 )
+rotation = 1.5708
+
+[node name="Glass52" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1180, 344 )
+rotation = 1.5708
+
+[node name="Glass51" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1180, 408 )
+rotation = 1.5708
+
+[node name="Glass50" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1180, 472 )
+rotation = 1.5708
+
+[node name="Glass49" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1180, 516 )
+rotation = 1.5708
+
+[node name="Glass64" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1472, 88 )
+rotation = 1.5708
+
+[node name="Glass63" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1472, 152 )
+rotation = 1.5708
+
+[node name="Glass62" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1472, 216 )
+rotation = 1.5708
+
+[node name="Glass61" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1472, 280 )
+rotation = 1.5708
+
+[node name="Glass60" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1472, 344 )
+rotation = 1.5708
+
+[node name="Glass59" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1472, 408 )
+rotation = 1.5708
+
+[node name="Glass58" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1472, 472 )
+rotation = 1.5708
+
+[node name="Glass57" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1472, 516 )
+rotation = 1.5708
+
+[node name="Glass27" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1216, 60 )
+
+[node name="Glass26" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1280, 60 )
+
+[node name="Glass25" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1344, 60 )
+
+[node name="Glass28" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1456, 60 )
+scale = Vector2( 0.5, 1 )
+
+[node name="Glass29" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1408, 60 )
+
+[node name="Glass34" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1216, 544 )
+
+[node name="Glass33" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1280, 544 )
+
+[node name="Glass32" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1344, 544 )
+
+[node name="Glass31" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1456, 544 )
+scale = Vector2( 0.5, 1 )
+
+[node name="Glass30" parent="Building5" instance=ExtResource( 6 )]
+position = Vector2( 1408, 544 )
+
+[node name="FloorArea3" parent="Building5" instance=ExtResource( 8 )]
+position = Vector2( 1312, 288 )
+
+[node name="Floor" type="TileMap" parent="Building5/FloorArea3"]
+modulate = Color( 0.952941, 0.835294, 0.647059, 1 )
+tile_set = SubResource( 2 )
+cell_size = Vector2( 32, 32 )
+collision_layer = 0
+collision_mask = 0
+format = 1
+tile_data = PoolIntArray( -393220, 0, 0, -393219, 0, 0, -393218, 0, 0, -393217, 0, 0, -458752, 0, 0, -458751, 0, 0, -458750, 0, 0, -458749, 0, 0, -458748, 0, 0, -327684, 0, 0, -327683, 0, 0, -327682, 0, 0, -327681, 0, 0, -393216, 0, 0, -393215, 0, 0, -393214, 0, 0, -393213, 0, 0, -393212, 0, 0, -262148, 0, 0, -262147, 0, 0, -262146, 0, 0, -262145, 0, 0, -327680, 0, 0, -327679, 0, 0, -327678, 0, 0, -327677, 0, 0, -327676, 0, 0, -196612, 0, 0, -196611, 0, 0, -196610, 0, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 0, 0, -196608, 0, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -196604, 0, 0, -65540, 0, 0, -65539, 0, 0, -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -4, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 262140, 0, 0, 262141, 0, 0, 262142, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 393212, 0, 0, 393213, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 458748, 0, 0, 458749, 0, 0, 458750, 0, 0, 458751, 0, 0, 393216, 0, 0, 393217, 0, 0, 393218, 0, 0, 393219, 0, 0, 393220, 0, 0, 524284, 0, 0, 524285, 0, 0, 524286, 0, 0, 524287, 0, 0, 458752, 0, 0, 458753, 0, 0, 458754, 0, 0, 458755, 0, 0, 458756, 0, 0 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Building5/FloorArea3"]
+position = Vector2( 16, 16 )
+shape = SubResource( 5 )
+
+[node name="Start" parent="." instance=ExtResource( 7 )]
+position = Vector2( 104, 152 )
+
+[node name="Enemy" parent="." instance=ExtResource( 3 )]
+position = Vector2( 488, 160 )
+
+[node name="Enemy4" parent="." instance=ExtResource( 3 )]
+position = Vector2( 548, 356 )
+
+[node name="Enemy2" parent="." instance=ExtResource( 3 )]
+position = Vector2( 508, 268 )
+
+[node name="Enemy3" parent="." instance=ExtResource( 3 )]
+position = Vector2( 492, 464 )
+
+[node name="Bird" parent="." instance=ExtResource( 5 )]
+position = Vector2( 292, 412 )
+
+[node name="Bird2" parent="." instance=ExtResource( 5 )]
+position = Vector2( 300, 268 )
+
+[node name="Bird3" parent="." instance=ExtResource( 5 )]
+position = Vector2( 308, 148 )
+
+[node name="Bird4" parent="." instance=ExtResource( 5 )]
+position = Vector2( 684, 304 )
+
+[node name="Bird5" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1020, 324 )
+
+[node name="Bird6" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1036, 168 )
+
+[node name="Bird7" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1052, 472 )
+
+[node name="Enemy5" parent="." instance=ExtResource( 3 )]
+position = Vector2( 828, 144 )
+
+[node name="Enemy6" parent="." instance=ExtResource( 3 )]
+position = Vector2( 832, 468 )
+
+[node name="Finish" parent="." instance=ExtResource( 4 )]
+position = Vector2( 1328, 296 )

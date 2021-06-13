@@ -18,6 +18,7 @@ scale = Vector2( 4.001, 1 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource( 1 )
 
 [node name="particle-1" type="Sprite" parent="." groups=[
