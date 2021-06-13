@@ -34,7 +34,7 @@ func _ready():
 	add_child(combo_timer)
 	combo_timer.one_shot = true
 	if finish:
-		finish.connect("level_complete", self, "create_level_menu")
+		finish.connect("level_complete", self, "create_level_complete_menu")
 
 	player.connect("player_mode_changed", self, "_handle_player_mode_changed")
 	player.position = start.position
@@ -84,11 +84,12 @@ func create_pause_menu():
 func close_pause_menu():
 	get_tree().paused = false
 	
-func create_level_menu():
+func create_level_complete_menu():
 	get_tree().paused = true
 	var level_complete = LevelComplete.instance()
 	level_complete.is_last_level = is_last_level
 	level_complete.connect("next_level_selected", self, "_handle_level_changed")
+	level_complete.connect("level_restarted", self, "_handle_level_restarted")
 	add_child(level_complete)
 
 func create_game_over_menu():
