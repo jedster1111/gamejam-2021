@@ -3,6 +3,7 @@ extends SlashableBody
 signal shoot(bullet, velocity, location)
 
 onready var ShootAudio = get_node("ShootAudio")
+onready var FireRate = get_node("Fire_Rate")
 
 const Bullet = preload("res://src/actors/Bullet.tscn")
 
@@ -16,6 +17,7 @@ var can_see_player = false
 
 func _ready():
 	add_to_group("enemies")
+	FireRate.wait_time = rand_range(0.7,0.9)
 
 func _process(_delta):
 	update()
