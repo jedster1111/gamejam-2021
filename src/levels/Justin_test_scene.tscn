@@ -88,4 +88,3 @@ position = Vector2( 312, -24 )
 [node name="FloorAreaShape2" type="CollisionShape2D" parent="FloorArea2"]
 position = Vector2( 24, 24 )
 shape = SubResource( 4 )
-[connection signal="shoot" from="Enemy" to="." method="_on_Enemy_shoot"]

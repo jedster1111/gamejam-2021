@@ -23,7 +23,7 @@ func _ready():
 	points = 500
 
 
-func _process(delta):
+func _process(_delta):
 	update()
 
 
@@ -42,7 +42,7 @@ func _process(delta):
 #	queue_free()
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	
 	if alert == true and scary_spot:
 		

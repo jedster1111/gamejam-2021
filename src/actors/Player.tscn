@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://assets/ninja-idle.png" type="Texture" id=1]
 [ext_resource path="res://src/actors/Player.gd" type="Script" id=2]
@@ -121,7 +121,35 @@ extents = Vector2( 8, 8 )
 [sub_resource type="CircleShape2D" id=22]
 radius = 1.03322
 
+[sub_resource type="Animation" id=23]
+resource_name = "Falling"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.5, 0.5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ -360.0, 4.3 ]
+}
+
 [node name="Player" type="KinematicBody2D"]
+rotation = 0.0750492
 collision_layer = 2
 script = ExtResource( 2 )
 
@@ -164,7 +192,11 @@ collision_mask = 32
 shape = SubResource( 22 )
 
 [node name="CoyoteTimer" type="Timer" parent="."]
+wait_time = 0.3
 one_shot = true
+
+[node name="FallAnimation" type="AnimationPlayer" parent="."]
+anims/Falling = SubResource( 23 )
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]
 [connection signal="body_entered" from="BulletDetector" to="." method="_on_BulletDetector_body_entered"]
 [connection signal="area_entered" from="FloorDetector" to="." method="_on_FloorDetector_area_entered"]
