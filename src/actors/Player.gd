@@ -70,6 +70,7 @@ func move_player():
 	if collision and collision != current_wall_collision:
 		start_idle()
 		rotation = collision.normal.angle()
+		camera.start_shake(0.1, 10, collision.remainder*3, 0)
 
 	current_wall_collision = collision
 
@@ -101,7 +102,6 @@ func start_dash(dash_to_position):
 	animated_sprite.play("slash")
 
 	mode = Modes.DASHING
-	camera.start()
 	start_pos = position
 	direction = (dash_to_position - position).normalized()
 	velocity = speed * direction
@@ -110,6 +110,7 @@ func end_dash():
 	start_idle()
 
 func start_follow_through(enemy_position):
+	camera.start_shake(0.01, 100, Vector2(50,50), 1)
 	coyote_timer.stop()
 	attack_audio.play()
 	mode = Modes.FOLLOW_THROUGH
