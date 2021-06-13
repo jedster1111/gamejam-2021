@@ -110,12 +110,12 @@ func end_dash():
 	start_idle()
 
 func start_follow_through(enemy_position):
-	camera.start_shake(0.01, 100, Vector2(50,50), 1)
 	coyote_timer.stop()
 	attack_audio.play()
 	mode = Modes.FOLLOW_THROUGH
 	start_pos = enemy_position
 	velocity = direction * follow_through_speed
+	camera.start_shake(0.01, 100, direction * 80, 1)
 	emit_signal("player_mode_changed", Modes.FOLLOW_THROUGH)
 	
 
