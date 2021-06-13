@@ -3,6 +3,8 @@ class_name SlashableBody
 
 signal points_earned(points)
 
+var random_generator = RandomNumberGenerator.new()
+
 var DestructionScene
 var audio_stream
 
@@ -13,6 +15,7 @@ var max_lives  = 1
 var lives = 1
 
 func _init():
+	random_generator.randomize()
 	DestructionScene = get_destruction_scene()
 	audio_stream = get_destruction_sound()
 

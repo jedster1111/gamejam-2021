@@ -24,7 +24,7 @@ func get_destruction_scene():
 	return load("res://src/actors/BloodSplatter.tscn")
 
 func get_destruction_sound():
-	return load("res://assets/audio/Death_2.wav")
+	return load("res://assets/audio/Death_" + String(random_generator.randi_range(2, 8)) + ".wav")
 
 
 func alert():
