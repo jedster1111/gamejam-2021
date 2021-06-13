@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends SlashableBody
 
 var velocity = Vector2(1000, 0)
 
