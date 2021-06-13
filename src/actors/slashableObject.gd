@@ -22,9 +22,11 @@ func hit(hit_direction: Vector2):
 	emit_signal("points_earned", points)
 	max_lives -= 1
 
+	var transormed_hit = transform.xform_inv(hit_direction)
+
 	var destruction_instance = DestructionScene.instance()
-	destruction_instance.position += hit_direction.normalized() * 30
-	destruction_instance.rotation = hit_direction.angle()
+	destruction_instance.position += transormed_hit.normalized() * 30
+	destruction_instance.rotation = transormed_hit.angle()
 	destruction_instance.scale *= 1.5
 
 	add_child(destruction_instance)
