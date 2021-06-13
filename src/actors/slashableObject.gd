@@ -4,20 +4,27 @@ class_name SlashableBody
 signal points_earned(points)
 
 var DestructionScene
-var audio_stream = preload("res://assets/audio/Death_2.wav")
+var audio_stream
+
+var audio_start_point = 0
 
 var points = 100
 var max_lives  = 1
 var lives = 1
 
 func _init():
-	_load_destruction_scene()
+	DestructionScene = get_destruction_scene()
+	audio_stream = get_destruction_sound()
 
 func _ready():
 	self.add_to_group("slashable")
 
-func _load_destruction_scene():
-	DestructionScene = load("res://src/actors/Destruction.tscn")
+func get_destruction_scene():
+	return load("res://src/actors/Destruction.tscn")
+
+func get_destruction_sound():
+	return load("res://assets/audio/Door_smash.wav")
+
 func hit(hit_direction: Vector2):
 	emit_signal("points_earned", points)
 	max_lives -= 1
@@ -36,7 +43,7 @@ func hit(hit_direction: Vector2):
 	var audio_player = AudioStreamPlayer2D.new()
 	audio_player.stream = audio_stream
 	add_child(audio_player)
-	audio_player.play()
+	audio_player.play(audio_start_point)
 	yield(destruction_instance, "animation_finished")
 	destruction_instance.queue_free()
 

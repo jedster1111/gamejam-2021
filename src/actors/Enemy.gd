@@ -4,7 +4,6 @@ signal shoot(bullet, velocity, location)
 
 const Bullet = preload("res://src/actors/Bullet.tscn")
 
-
 var target = null
 var hit_pos
 var laser_color = Color(1.0, 0.0, 0.0)
@@ -21,8 +20,12 @@ func _process(_delta):
 	if target:
 		aim()
 
-func _load_destruction_scene():
-	DestructionScene = load("res://src/actors/BloodSplatter.tscn")
+func get_destruction_scene():
+	return load("res://src/actors/BloodSplatter.tscn")
+
+func get_destruction_sound():
+	return load("res://assets/audio/Death_2.wav")
+
 
 func alert():
 	is_alert = true
