@@ -4,16 +4,19 @@
 [ext_resource path="res://assets/Door.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 15.8969, 3.34747 )
+extents = Vector2( 2.75829, 16.6321 )
 
 [node name="Door" type="KinematicBody2D"]
+position = Vector2( 0, -0.140305 )
+scale = Vector2( 2, 2 )
 collision_layer = 4
 script = ExtResource( 1 )
 
 [node name="Door" type="Sprite" parent="."]
-position = Vector2( 16, 3.3073 )
+position = Vector2( -0.0478668, -0.356438 )
+rotation = -1.57079
 texture = ExtResource( 2 )
+offset = Vector2( 0, 1.6837 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 15.9983, 1.85616 )
 shape = SubResource( 1 )
