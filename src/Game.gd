@@ -83,11 +83,9 @@ func score_calc(points):
 
 func calculate_scores():
 	calculate_ninja_grade()
-	print("calculated n")
 	calculate_end_score()
 
 func set_child_values():
-	print("ninja_grade", ninja_grade)
 	inGameUi.set_combo(combo)
 	inGameUi.set_score(score)
 	level.current_combo = combo
@@ -119,8 +117,6 @@ func calculate_end_score():
 		_: ninja_bonus_points = 0
 
 	end_score = score + ninja_bonus_points
-	print("Calculated end_score", end_score)
-
 	
 func reset_state():
 	combo = 1
