@@ -46,6 +46,7 @@ func _ready():
 	player.position = start.position
 	player.rotation = start.rotation - PI/2
 	add_child(player)
+	player.get_node("Camera2D").make_current()
 	
 	for slashable in slashable_nodes:
 		slashable.connect("points_earned", self, "on_point_earned")
@@ -55,6 +56,7 @@ func _ready():
 	
 func _set_player_start_position(p):
 	p.position = start_position
+	
 
 func _on_Enemy_shoot(bullet):
 	add_child(bullet)

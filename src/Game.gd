@@ -20,6 +20,10 @@ func _ready():
 	set_child_values()
 	themeTune.play()
 
+func _process(delta):
+	if Input.is_action_pressed("Restart"):
+		_on_level_restarted()
+
 func _on_next_level_selected():
 	current_level += 1
 	_load_level()
