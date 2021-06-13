@@ -2,6 +2,8 @@ extends SlashableBody
 
 signal shoot(bullet, velocity, location)
 
+onready var ShootAudio = get_node("ShootAudio")
+
 const Bullet = preload("res://src/actors/Bullet.tscn")
 
 var target = null
@@ -66,8 +68,12 @@ func shoot():
 	bullet.rotation = bullet.velocity.angle()
 	bullet.position = position + bullet.velocity.normalized() * 70
 	can_shootROF = false
+	ShootAudio.play(0.1)
 	
 	emit_signal("shoot", bullet)
+
+
+	
 
 func _on_Visibility_body_entered(body):
 	if target:
