@@ -7,7 +7,7 @@
 radius = 22.9084
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 896.036
+radius = 592.0
 
 [node name="Enemy" type="KinematicBody2D"]
 collision_layer = 4
@@ -32,6 +32,7 @@ collision_mask = 3
 shape = SubResource( 2 )
 
 [node name="Fire_Rate" type="Timer" parent="."]
+wait_time = 0.744
 autostart = true
 
 [node name="AlertTimer" type="Timer" parent="."]
