@@ -15,17 +15,17 @@ __meta__ = {
 }
 
 [node name="CenterContainer" type="CenterContainer" parent="MarginContainer"]
-margin_right = 1024.0
-margin_bottom = 600.0
+margin_right = 1600.0
+margin_bottom = 900.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Main" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
-margin_left = 398.0
-margin_top = 243.0
-margin_right = 625.0
-margin_bottom = 357.0
+margin_left = 686.0
+margin_top = 393.0
+margin_right = 913.0
+margin_bottom = 507.0
 custom_constants/separation = 20
 __meta__ = {
 "_edit_use_anchors_": false
@@ -46,10 +46,10 @@ text = "Exit"
 
 [node name="LevelSelect" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
 visible = false
-margin_left = 512.0
-margin_top = 300.0
-margin_right = 512.0
-margin_bottom = 300.0
+margin_left = 800.0
+margin_top = 450.0
+margin_right = 800.0
+margin_bottom = 450.0
 script = ExtResource( 3 )
 [connection signal="pressed" from="MarginContainer/CenterContainer/Main/StartGame" to="." method="_on_StartGame_pressed"]
 [connection signal="pressed" from="MarginContainer/CenterContainer/Main/Exit" to="." method="_on_Exit_pressed"]

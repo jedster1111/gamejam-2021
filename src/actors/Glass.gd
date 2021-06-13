@@ -1,14 +1,8 @@
 extends SlashableBody
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
+func get_destruction_sound():
+	audio_start_point = 0.2
+	return load("res://assets/audio/Minecraft_glass.wav")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
