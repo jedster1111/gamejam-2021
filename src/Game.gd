@@ -10,7 +10,7 @@ onready var inGameUi = get_node("InGameUI")
 
 
 var current_level = 0
-var levels = ["tutorialLevel", "birdIntro", "level-1", "Justin_test_scene", "JumpingBuilding"]
+var levels = ["tutorialLevel", "birdIntro", "level-1", "Justin_test_scene", "JumpingBuilding", "M1"]
 var level
 
 func _ready():
