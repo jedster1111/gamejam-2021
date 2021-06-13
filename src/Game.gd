@@ -34,6 +34,8 @@ func _set_up_level():
 	level.connect("points_earned", self, "score_calc")
 	level.connect("combo_timer_updated", self, "change_combo_timer_bar")
 	level.connect("level_restarted", self, "_on_level_restarted")
+	level.connect("game_paused", self, "_on_game_paused")
+	level.connect("game_unpaused", self, "_on_game_unpaused")
 
 	level.is_last_level = current_level + 1 == levels.size()
 
@@ -43,6 +45,16 @@ func _set_up_level():
 func _on_level_restarted():
 	print("Level restarted")
 	_load_level()
+
+func _on_game_paused():
+	print("Pause level")
+	get_tree().paused = true
+	inGameUi.get_child(0).visible = false
+
+func _on_game_unpaused():
+	print("Pause level")
+	get_tree().paused = false
+	inGameUi.get_child(0).visible = true
 
 func change_combo_timer_bar(value):
 	inGameUi.set_combo_timer(value)
@@ -59,6 +71,7 @@ func on_combo_broken():
 
 func score_calc(points):
 	score += combo * points
+	level.current_score = score
 	inGameUi.set_score(score)
 
 func reset_state():
@@ -67,3 +80,4 @@ func reset_state():
 	inGameUi.set_combo(combo)
 	inGameUi.set_score(score)
 	level.current_combo = combo
+	level.current_score = score
