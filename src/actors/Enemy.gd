@@ -13,6 +13,9 @@ var is_alert = false
 var can_start_shooting = false
 var can_see_player = false
 
+func _ready():
+	add_to_group("enemies")
+
 func _process(_delta):
 	update()
 	if target:

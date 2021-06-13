@@ -18,6 +18,7 @@ var current_combo = 1
 onready var player = get_node("Player")
 onready var finish = get_node("Finish")
 onready var slashable_nodes = get_tree().get_nodes_in_group("slashable")
+onready var enemy_nodes = get_tree().get_nodes_in_group("enemies")
 onready var combo_timer = Timer.new()
 
 func _ready():
@@ -31,7 +32,13 @@ func _ready():
 	
 	for slashable in slashable_nodes:
 		slashable.connect("points_earned", self, "on_point_earned")
+
+	for enemy in enemy_nodes:
+		enemy.connect("shoot", self, "_on_Enemy_shoot")
 	
+func _on_Enemy_shoot(bullet):
+	add_child(bullet)
+
 func on_point_earned(points):
 	emit_signal("points_earned", points)
 
@@ -49,7 +56,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		create_pause_menu()
 		
-func _physics_process(delta):
+func _physics_process(_delta):
 	var perc = combo_timer.time_left/combo_timer.wait_time * 100
 	emit_signal("combo_timer_updated", perc)
 
@@ -86,6 +93,3 @@ func break_combo():
 
 func _handle_level_changed():
 	emit_signal("next_level_selected")
-
-func _on_Enemy_shoot(bullet):
-  add_child(bullet)
