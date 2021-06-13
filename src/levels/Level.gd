@@ -7,6 +7,7 @@ signal combo_broken
 signal next_level_selected
 signal points_earned
 signal combo_timer_updated(perc)
+signal level_restarted
 
 
 var PauseMenu = preload("res://src/ui/PauseMenu.tscn")
@@ -93,7 +94,7 @@ func create_level_menu():
 func create_game_over_menu():
 	get_tree().paused = true
 	var game_over_menu = GameOverMenu.instance()
-	#level_menu.connect("pause_menu_closed", self, "close_pause_menu")
+	game_over_menu.connect("level_restarted", self, "_handle_level_restarted")
 	add_child(game_over_menu)
 
 func increase_combo():
@@ -105,3 +106,6 @@ func break_combo():
 
 func _handle_level_changed():
 	emit_signal("next_level_selected")
+
+func _handle_level_restarted():
+	emit_signal("level_restarted")
