@@ -38,12 +38,12 @@ func aim():
 			can_see_player = true
 			if is_alert == false:
 				alert()
-			$coin.self_modulate.r = 0.2
+			$Enemy.self_modulate.r = 0.2
 			rotation = (target.position - position).angle()
 		else:
 			can_see_player = false
 			is_alert = false
-			$coin.self_modulate.r = 1.0
+			$Enemy.self_modulate.r = 1.0
 			return
 		if can_shootROF and can_start_shooting:
 			shoot()
