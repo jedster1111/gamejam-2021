@@ -1,7 +1,11 @@
 extends CanvasLayer
 
+onready var MainMenu = get_node("MarginContainer/CenterContainer/Main")
+onready var LevelSelectMenu = get_node("MarginContainer/CenterContainer/LevelSelect")
+
 func _on_StartGame_pressed():
-	var _success = get_tree().change_scene("res://src/Game.tscn")
+	MainMenu.visible = false
+	LevelSelectMenu.visible = true
 
 func _on_Exit_pressed():
 	get_tree().quit()

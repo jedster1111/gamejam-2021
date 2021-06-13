@@ -10,10 +10,11 @@ onready var inGameUi = get_node("InGameUI")
 onready var themeTune = get_node("ThemeTune")
 
 var current_level = 0
-var levels = ["tutorialLevel", "birdIntro", "level-1", "Justin_test_scene", "JumpingBuilding"]
+var levels = global.levels
 var level
 
 func _ready():
+	current_level = global.selected_starting_level
 	_load_level()
 	calculate_scores()
 	set_child_values()
