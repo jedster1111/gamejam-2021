@@ -36,6 +36,10 @@ config/name="GameJam-2021"
 run/main_scene="res://src/ui/StartScreen.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+global="*res://src/global.gd"
+
 [input]
 
 dash={
