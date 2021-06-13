@@ -18,6 +18,7 @@ var can_see_player = false
 func _ready():
 	add_to_group("enemies")
 	FireRate.wait_time = rand_range(0.7,0.9)
+	$AlertTimer.wait_time = rand_range(1.5, 2)
 
 func _process(_delta):
 	update()

@@ -12,21 +12,21 @@
 [ext_resource path="res://assets/environment/clouds/Clouds V2.png" type="Texture" id=10]
 [ext_resource path="res://assets/environment/roads2W.png" type="Texture" id=11]
 
-[sub_resource type="StreamTexture" id=9]
+[sub_resource type="StreamTexture" id=1]
 flags = 4
 load_path = "res://.import/Clouds V2.png-767e6bec83dd5f2145e18f5c0975ebd3.stex"
 
-[sub_resource type="StreamTexture" id=10]
+[sub_resource type="StreamTexture" id=2]
 flags = 4
 load_path = "res://.import/Clouds V2.png-767e6bec83dd5f2145e18f5c0975ebd3.stex"
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 240, 95.8895 )
 
-[sub_resource type="ConvexPolygonShape2D" id=2]
+[sub_resource type="ConvexPolygonShape2D" id=4]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
-[sub_resource type="TileSet" id=3]
+[sub_resource type="TileSet" id=5]
 0/name = "tileset.png 0"
 0/texture = ExtResource( 5 )
 0/tex_offset = Vector2( 0, 0 )
@@ -39,24 +39,24 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 2 ),
+"shape": SubResource( 4 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
 
-[sub_resource type="RectangleShape2D" id=4]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 232, 184 )
 
-[sub_resource type="ConvexPolygonShape2D" id=5]
+[sub_resource type="ConvexPolygonShape2D" id=7]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 64, 0, 64 )
 
-[sub_resource type="ConvexPolygonShape2D" id=6]
+[sub_resource type="ConvexPolygonShape2D" id=8]
 points = PoolVector2Array( 0, 0, 64, 0, 64, 32, 0, 32 )
 
-[sub_resource type="ConvexPolygonShape2D" id=7]
+[sub_resource type="ConvexPolygonShape2D" id=9]
 points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 
-[sub_resource type="TileSet" id=8]
+[sub_resource type="TileSet" id=10]
 0/name = "block.png 0"
 0/texture = ExtResource( 4 )
 0/tex_offset = Vector2( 0, 0 )
@@ -69,7 +69,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 5 ),
+"shape": SubResource( 7 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 0/z_index = 0
@@ -85,7 +85,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 6 ),
+"shape": SubResource( 8 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 1/z_index = 0
@@ -101,7 +101,7 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 "autotile_coord": Vector2( 0, 0 ),
 "one_way": false,
 "one_way_margin": 1.0,
-"shape": SubResource( 7 ),
+"shape": SubResource( 9 ),
 "shape_transform": Transform2D( 1, 0, 0, 1, 0, 0 )
 } ]
 2/z_index = 0
@@ -110,12 +110,32 @@ points = PoolVector2Array( 0, 0, 32, 0, 32, 32, 0, 32 )
 script = ExtResource( 3 )
 
 [node name="Grass" type="Sprite" parent="."]
-modulate = Color( 0.101961, 0.901961, 0.188235, 1 )
 position = Vector2( 316, 256.778 )
 scale = Vector2( 95.6, 62.3222 )
-texture = ExtResource( 5 )
+texture = ExtResource( 11 )
 region_enabled = true
-region_rect = Rect2( 20, 20, 20, 20 )
+region_rect = Rect2( 180, 90, 20, 30 )
+
+[node name="road" type="Sprite" parent="."]
+position = Vector2( 377.708, 272 )
+rotation = 1.5708
+scale = Vector2( 4.49753, 7.26748 )
+texture = ExtResource( 11 )
+region_enabled = true
+region_rect = Rect2( 200, 0, 50, 80 )
+
+[node name="road2" type="Sprite" parent="road"]
+position = Vector2( 0.0207225, -79.4162 )
+scale = Vector2( 0.99917, 1 )
+texture = ExtResource( 11 )
+region_enabled = true
+region_rect = Rect2( 200, 0, 50, 80 )
+
+[node name="road3" type="Sprite" parent="road"]
+position = Vector2( -3.05176e-05, 79.4162 )
+texture = ExtResource( 11 )
+region_enabled = true
+region_rect = Rect2( 200, 0, 50, 80 )
 
 [node name="Clouds V2" type="Sprite" parent="."]
 position = Vector2( -200, 432 )
@@ -127,14 +147,14 @@ region_rect = Rect2( 79, 22, 35, 24 )
 [node name="Clouds V3" type="Sprite" parent="."]
 position = Vector2( 736, 472 )
 scale = Vector2( 4.66996, 4.34034 )
-texture = SubResource( 9 )
+texture = SubResource( 1 )
 region_enabled = true
 region_rect = Rect2( 7, 12, 64, 38 )
 
 [node name="Clouds V4" type="Sprite" parent="."]
 position = Vector2( 712, 32 )
 scale = Vector2( 4.66996, 4.34034 )
-texture = SubResource( 10 )
+texture = SubResource( 2 )
 region_enabled = true
 region_rect = Rect2( 70, 91, 37, 29 )
 
@@ -143,11 +163,11 @@ position = Vector2( 280, 512 )
 
 [node name="FloorAreaShape" type="CollisionShape2D" parent="FloorArea"]
 position = Vector2( -8, 0 )
-shape = SubResource( 1 )
+shape = SubResource( 3 )
 
 [node name="Floor" type="TileMap" parent="FloorArea"]
 modulate = Color( 0.407843, 0.870588, 0.403922, 1 )
-tile_set = SubResource( 3 )
+tile_set = SubResource( 5 )
 cell_size = Vector2( 32, 32 )
 collision_layer = 0
 collision_mask = 0
@@ -159,12 +179,12 @@ position = Vector2( 312, -24 )
 
 [node name="FloorAreaShape2" type="CollisionShape2D" parent="FloorArea2"]
 position = Vector2( -24, -16 )
-shape = SubResource( 4 )
+shape = SubResource( 6 )
 
 [node name="Floor2" type="TileMap" parent="FloorArea2"]
 modulate = Color( 0.407843, 0.870588, 0.403922, 1 )
 position = Vector2( -32, 536 )
-tile_set = SubResource( 3 )
+tile_set = SubResource( 5 )
 cell_size = Vector2( 32, 32 )
 collision_layer = 0
 collision_mask = 0
@@ -205,28 +225,7 @@ rotation = 1.5708
 
 [node name="Walls" type="TileMap" parent="."]
 modulate = Color( 0.439216, 0.34902, 0.34902, 1 )
-tile_set = SubResource( 8 )
+tile_set = SubResource( 10 )
 cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( -458751, 1, 0, -458750, 1, 0, -458749, 1, 0, -458748, 1, 0, -458747, 1, 0, -458746, 1, 0, -458745, 1, 0, -458744, 1, 0, -458743, 1, 0, -458742, 1, 0, -458741, 1, 0, -458740, 1, 0, -458739, 1, 0, -458738, 1, 0, -458737, 1, 0, -458736, 1, 0, -393215, 1, 0, -393200, 1, 0, -327679, 1, 0, -327664, 1, 0, -262143, 1, 0, -262128, 1, 0, -196607, 1, 0, -196592, 1, 0, -131071, 1, 0, -131056, 1, 0, -65535, 1, 0, -65520, 1, 0, 1, 1, 0, 16, 1, 0, 65537, 1, 0, 65552, 1, 0, 131073, 1, 0, 131088, 1, 0, 196609, 1, 0, 196624, 1, 0, 262145, 1, 0, 262146, 1, 0, 262147, 1, 0, 262148, 1, 0, 262149, 1, 0, 262156, 1, 0, 262157, 1, 0, 262158, 1, 0, 262159, 1, 0, 262160, 1, 0, 786432, 1, 0, 786433, 1, 0, 786434, 1, 0, 786435, 1, 0, 786436, 1, 0, 786437, 1, 0, 786444, 1, 0, 786445, 1, 0, 786446, 1, 0, 786447, 1, 0, 786448, 1, 0, 851968, 2, 0, 851984, 2, 0, 917504, 2, 0, 917520, 2, 0, 983040, 2, 0, 983056, 2, 0, 1048576, 2, 0, 1048592, 2, 0, 1114112, 2, 0, 1114128, 2, 0, 1179648, 2, 0, 1179664, 2, 0, 1245184, 2, 0, 1245185, 1, 0, 1245186, 1, 0, 1245187, 1, 0, 1245188, 1, 0, 1245189, 1, 0, 1245190, 1, 0, 1245191, 1, 0, 1245192, 1, 0, 1245193, 1, 0, 1245194, 1, 0, 1245195, 1, 0, 1245196, 1, 0, 1245197, 1, 0, 1245198, 1, 0, 1245199, 1, 0, 1245200, 1, 0 )
-
-[node name="road" type="Sprite" parent="."]
-position = Vector2( 377.708, 272 )
-rotation = 1.5708
-scale = Vector2( 4.49753, 7.26748 )
-texture = ExtResource( 11 )
-region_enabled = true
-region_rect = Rect2( 200, 0, 50, 80 )
-
-[node name="road2" type="Sprite" parent="road"]
-position = Vector2( 0.0207225, -79.4162 )
-scale = Vector2( 0.99917, 1 )
-texture = ExtResource( 11 )
-region_enabled = true
-region_rect = Rect2( 200, 0, 50, 80 )
-
-[node name="road3" type="Sprite" parent="road"]
-position = Vector2( -3.05176e-05, 79.4162 )
-texture = ExtResource( 11 )
-region_enabled = true
-region_rect = Rect2( 200, 0, 50, 80 )

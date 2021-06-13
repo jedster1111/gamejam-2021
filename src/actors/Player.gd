@@ -108,7 +108,7 @@ func start_follow_through(enemy_position):
 	mode = Modes.FOLLOW_THROUGH
 	start_pos = enemy_position
 	velocity = direction * follow_through_speed
-	camera.start_shake(0.01, 100, direction * 80, 1)
+	camera.start_shake(0.02, 100, direction * 40, 1)
 	emit_signal("player_mode_changed", Modes.FOLLOW_THROUGH)
 	
 
