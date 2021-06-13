@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/actors/Glass.gd" type="Script" id=1]
 [ext_resource path="res://assets/environment/window/window-horizontal.png" type="Texture" id=2]
+[ext_resource path="res://assets/environment/window/particle-3.png" type="Texture" id=3]
+[ext_resource path="res://assets/environment/window/particle-1.png" type="Texture" id=4]
+[ext_resource path="res://assets/environment/window/particle-2.png" type="Texture" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
@@ -16,3 +19,52 @@ texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
+
+[node name="particle-1" type="Sprite" parent="." groups=[
+"shattered",
+]]
+visible = false
+position = Vector2( -32, 56 )
+texture = ExtResource( 4 )
+
+[node name="particle-2" type="Sprite" parent="." groups=[
+"shattered",
+]]
+visible = false
+position = Vector2( 0, 72 )
+texture = ExtResource( 5 )
+
+[node name="particle-3" type="Sprite" parent="." groups=[
+"shattered",
+]]
+visible = false
+position = Vector2( 32, 64 )
+texture = ExtResource( 3 )
+
+[node name="particle-7" type="Sprite" parent="." groups=[
+"shattered",
+]]
+visible = false
+position = Vector2( 40, 48 )
+texture = ExtResource( 4 )
+
+[node name="particle-6" type="Sprite" parent="." groups=[
+"shattered",
+]]
+visible = false
+position = Vector2( 32, 80 )
+texture = ExtResource( 5 )
+
+[node name="particle-5" type="Sprite" parent="." groups=[
+"shattered",
+]]
+visible = false
+position = Vector2( 16, 64 )
+texture = ExtResource( 3 )
+
+[node name="particle-4" type="Sprite" parent="." groups=[
+"shattered",
+]]
+visible = false
+position = Vector2( -24, 72 )
+texture = ExtResource( 3 )
