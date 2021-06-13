@@ -22,7 +22,7 @@ func _ready():
 
 func _process(_delta):
 	update()
-	if target:
+	if target and lives > 0:
 		aim()
 
 func get_destruction_scene():
@@ -62,7 +62,7 @@ func aim():
 
 
 func _draw():
-	if target and can_see_player:
+	if target and can_see_player and lives > 0:
 		draw_line(Vector2(), (target.position - position).rotated(-rotation), laser_color)
 
 func shoot():

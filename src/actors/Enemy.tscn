@@ -36,7 +36,7 @@ wait_time = 0.744
 autostart = true
 
 [node name="AlertTimer" type="Timer" parent="."]
-wait_time = 2.5
+wait_time = 0.6
 one_shot = true
 
 [node name="ShootAudio" type="AudioStreamPlayer2D" parent="."]
