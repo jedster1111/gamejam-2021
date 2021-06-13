@@ -37,8 +37,6 @@ func _physics_process(_delta):
 
 	if Input.is_action_just_pressed("dash") and mode != Modes.DASHING:
 		var mouse_position = get_global_mouse_position()
-		var dash_direction = position.direction_to(mouse_position)
-		if current_wall_collision and !is_dash_away_from_wall(dash_direction, current_wall_collision.normal): return
 			
 		start_dash(mouse_position)
 
@@ -67,8 +65,9 @@ func fall_to_death():
 func move_player():
 	rotation = velocity.angle()
 	var collision = move_and_collide(velocity * get_process_delta_time())
-	if collision and collision != current_wall_collision:
+	if collision:
 		start_idle()
+		position = position + collision.normal * 5
 		rotation = collision.normal.angle()
 		camera.start_shake(0.1, 10, collision.remainder*3, 0)
 
