@@ -22,8 +22,12 @@ func _ready():
 	$AnimatedSprite.play("idle")
 	points = 500
 
-func _load_destruction_scene():
-	DestructionScene = load("res://src/actors/BloodSplatter.tscn")
+func get_destruction_scene():
+	return load("res://src/actors/BloodSplatter.tscn")
+
+func get_destruction_sound():
+	audio_start_point = 0.2
+	return load("res://assets/audio/blood_splatter.wav")
 
 func _process(_delta):
 	update()
