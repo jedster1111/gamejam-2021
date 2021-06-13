@@ -2,6 +2,9 @@ extends Node2D
 
 var combo = 1
 var score = 0
+var number_of_combo_breaks = 0
+var ninja_grade = "S+"
+var end_score = 0
 
 onready var inGameUi = get_node("InGameUI")
 
@@ -12,6 +15,8 @@ var level
 
 func _ready():
 	_load_level()
+	calculate_scores()
+	set_child_values()
 
 func _on_next_level_selected():
 	current_level += 1
@@ -61,23 +66,67 @@ func change_combo_timer_bar(value):
 
 func on_combo_increased():
 	combo += 1
-	inGameUi.set_combo(combo)
-	level.current_combo = combo
+	set_child_values()
 
 func on_combo_broken():
 	combo = 1
-	inGameUi.set_combo(combo)
-	level.current_combo = combo
+	number_of_combo_breaks += 1
+	
+	calculate_scores()
+	set_child_values()
 
 func score_calc(points):
 	score += combo * points
-	level.current_score = score
-	inGameUi.set_score(score)
 
-func reset_state():
-	combo = 1
-	score = 0
+	calculate_scores()
+	set_child_values()
+
+func calculate_scores():
+	calculate_ninja_grade()
+	print("calculated n")
+	calculate_end_score()
+
+func set_child_values():
+	print("ninja_grade", ninja_grade)
 	inGameUi.set_combo(combo)
 	inGameUi.set_score(score)
 	level.current_combo = combo
+	level.ninja_grade = ninja_grade
+	level.end_score = end_score
 	level.current_score = score
+
+func calculate_ninja_grade():
+	var result
+	match number_of_combo_breaks:
+		0: result = "S+"
+		1,2: result = "S"
+		3,4,5: result = "A"
+		6,7,8,9,10: result = "B"
+		11,12,13,14: result = "C"
+		_: result = "D"
+
+	ninja_grade = result
+
+func calculate_end_score():
+	var ninja_bonus_points
+
+	match ninja_grade:
+		"S+": ninja_bonus_points = 10000
+		"S": ninja_bonus_points = 9000
+		"A": ninja_bonus_points = 7000
+		"B": ninja_bonus_points = 4000
+		"C": ninja_bonus_points = 1000
+		_: ninja_bonus_points = 0
+
+	end_score = score + ninja_bonus_points
+	print("Calculated end_score", end_score)
+
+	
+func reset_state():
+	combo = 1
+	score = 0
+	number_of_combo_breaks = 0
+	ninja_grade = "S+"
+	end_score = 0
+	
+	set_child_values()

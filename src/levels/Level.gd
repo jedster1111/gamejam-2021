@@ -18,7 +18,10 @@ var GameOverMenu = preload("res://src/ui/GameOver.tscn")
 var Player = preload("res://src/actors/Player.tscn")
 
 var current_combo = 1
+var ninja_grade = "S"
 var current_score = 0
+var end_score = 0
+
 var is_last_level = false
 
 onready var start_position = Vector2()
@@ -94,6 +97,8 @@ func create_level_complete_menu():
 
 	level_complete.is_last_level = is_last_level
 	level_complete.score = current_score
+	level_complete.ninja_grade = ninja_grade
+	level_complete.end_score = end_score
 
 	level_complete.connect("next_level_selected", self, "_handle_level_changed")
 	level_complete.connect("level_restarted", self, "_handle_level_restarted")

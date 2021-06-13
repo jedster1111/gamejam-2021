@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://src/ui/LevelComplete.gd" type="Script" id=1]
 [ext_resource path="res://src/ui/ScoreCounter.tscn" type="PackedScene" id=2]
+[ext_resource path="res://src/ui/NinjaScoreDisplay.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/ui/EndScoreCounter.tscn" type="PackedScene" id=4]
 
 [node name="LevelComplete" type="CanvasLayer"]
 pause_mode = 2
@@ -19,33 +21,45 @@ margin_right = 1024.0
 margin_bottom = 600.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/CenterContainer"]
-margin_left = 439.0
-margin_top = 243.0
-margin_right = 585.0
-margin_bottom = 356.0
+margin_left = 422.0
+margin_top = 198.0
+margin_right = 601.0
+margin_bottom = 401.0
+
+[node name="NinjaScoreDisplay" parent="MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource( 3 )]
+margin_left = 0.0
+margin_top = 0.0
+margin_right = 179.0
+margin_bottom = 41.0
 
 [node name="ScoreCounter" parent="MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource( 2 )]
 margin_left = 0.0
-margin_top = 0.0
-margin_right = 146.0
-margin_bottom = 41.0
+margin_top = 45.0
+margin_right = 179.0
+margin_bottom = 86.0
+
+[node name="EndScoreCounter" parent="MarginContainer/CenterContainer/VBoxContainer" instance=ExtResource( 4 )]
+margin_left = 0.0
+margin_top = 90.0
+margin_right = 179.0
+margin_bottom = 131.0
 
 [node name="NextLevel" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
-margin_top = 45.0
-margin_right = 146.0
-margin_bottom = 65.0
+margin_top = 135.0
+margin_right = 179.0
+margin_bottom = 155.0
 text = "Next Level"
 
 [node name="Replay" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
-margin_top = 69.0
-margin_right = 146.0
-margin_bottom = 89.0
+margin_top = 159.0
+margin_right = 179.0
+margin_bottom = 179.0
 text = "Replay"
 
 [node name="Quit" type="Button" parent="MarginContainer/CenterContainer/VBoxContainer"]
-margin_top = 93.0
-margin_right = 146.0
-margin_bottom = 113.0
+margin_top = 183.0
+margin_right = 179.0
+margin_bottom = 203.0
 text = "Return to Main Menu"
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/NextLevel" to="." method="_on_NextLevel_pressed"]
 [connection signal="pressed" from="MarginContainer/CenterContainer/VBoxContainer/Replay" to="." method="_on_Replay_pressed"]
