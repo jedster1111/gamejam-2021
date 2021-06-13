@@ -11,23 +11,23 @@
 [ext_resource path="res://src/levels/FloorArea.tscn" type="PackedScene" id=9]
 [ext_resource path="res://assets/car_assets/Grass/Grass single.png" type="Texture" id=10]
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10.5686, 28.97 )
 
-[sub_resource type="RectangleShape2D" id=7]
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 10.3048, 29.7217 )
 
-[sub_resource type="RectangleShape2D" id=10]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 32.6757, 10 )
 
-[sub_resource type="RectangleShape2D" id=8]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 19.8315, 30.8032 )
 
-[sub_resource type="StreamTexture" id=1]
+[sub_resource type="StreamTexture" id=5]
 flags = 4
 load_path = "res://.import/tileset.png-3c625a847ece11c15fab5bb17369eade.stex"
 
-[sub_resource type="RectangleShape2D" id=9]
+[sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 20.2993, 32.7665 )
 
 [node name="Level" type="Node2D"]
@@ -97,19 +97,20 @@ texture = ExtResource( 5 )
 region_enabled = true
 region_rect = Rect2( 300, 82, 101, 26 )
 
-[node name="Bus blue front" type="Sprite" parent="."]
+[node name="FloorArea" parent="." instance=ExtResource( 9 )]
 position = Vector2( 188.906, 327.158 )
 rotation = -1.57079
 scale = Vector2( 3.36771, 3.36771 )
+
+[node name="Bus blue front" type="Sprite" parent="FloorArea"]
+rotation = 9.09495e-13
 texture = ExtResource( 7 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="FloorArea" parent="Bus blue front" instance=ExtResource( 9 )]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Bus blue front/FloorArea"]
-shape = SubResource( 6 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FloorArea"]
+shape = SubResource( 1 )
 
 [node name="Bus blue front2" type="Sprite" parent="."]
 position = Vector2( 914.745, 343.204 )
@@ -123,7 +124,7 @@ __meta__ = {
 [node name="FloorArea" parent="Bus blue front2" instance=ExtResource( 9 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bus blue front2/FloorArea"]
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="Bus blue front3" type="Sprite" parent="."]
 position = Vector2( 1339.22, 343.204 )
@@ -137,7 +138,7 @@ __meta__ = {
 [node name="FloorArea" parent="Bus blue front3" instance=ExtResource( 9 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Bus blue front3/FloorArea"]
-shape = SubResource( 6 )
+shape = SubResource( 1 )
 
 [node name="Truck front" type="Sprite" parent="."]
 position = Vector2( 653.927, 569.47 )
@@ -151,7 +152,7 @@ __meta__ = {
 [node name="FloorArea" parent="Truck front" instance=ExtResource( 9 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Truck front/FloorArea"]
-shape = SubResource( 7 )
+shape = SubResource( 2 )
 
 [node name="GrassPlatform" type="Node2D" parent="."]
 position = Vector2( 852.855, 435.246 )
@@ -177,7 +178,7 @@ texture = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GrassPlatform/FloorArea"]
 position = Vector2( 24.698, -0.655701 )
-shape = SubResource( 10 )
+shape = SubResource( 3 )
 
 [node name="CarRed2" type="Sprite" parent="."]
 position = Vector2( 429.787, 503.578 )
@@ -192,12 +193,12 @@ __meta__ = {
 [node name="FloorArea" parent="CarRed2" instance=ExtResource( 9 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CarRed2/FloorArea"]
-shape = SubResource( 8 )
+shape = SubResource( 4 )
 
 [node name="CarBlack" type="Sprite" parent="."]
 position = Vector2( 362.617, 324.235 )
 rotation = -1.57079
-texture = SubResource( 1 )
+texture = SubResource( 5 )
 region_enabled = true
 region_rect = Rect2( 243, 0, 41, 64 )
 __meta__ = {
@@ -207,25 +208,20 @@ __meta__ = {
 [node name="FloorArea" parent="CarBlack" instance=ExtResource( 9 )]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CarBlack/FloorArea"]
-shape = SubResource( 9 )
+shape = SubResource( 6 )
 
 [node name="Start" parent="." instance=ExtResource( 2 )]
 position = Vector2( 126.35, 317.238 )
-
-[node name="Enemy" parent="." instance=ExtResource( 8 )]
-position = Vector2( 243.153, 323.118 )
 
 [node name="Enemy2" parent="." instance=ExtResource( 8 )]
 position = Vector2( 430.056, 501.438 )
 
 [node name="Enemy3" parent="." instance=ExtResource( 8 )]
 position = Vector2( 585.202, 568.012 )
-scale = Vector2( 1, 1 )
 
 [node name="Enemy4" parent="." instance=ExtResource( 8 )]
 position = Vector2( 722.133, 566.32 )
 rotation = -3.55271e-15
-scale = Vector2( 1, 1 )
 
 [node name="Enemy5" parent="." instance=ExtResource( 8 )]
 position = Vector2( 856.817, 434.862 )
@@ -238,3 +234,6 @@ position = Vector2( 975.745, 338.587 )
 
 [node name="Finish" parent="." instance=ExtResource( 3 )]
 position = Vector2( 1390.13, 337.132 )
+
+[node name="Enemy" parent="." instance=ExtResource( 8 )]
+position = Vector2( 249.147, 324.716 )

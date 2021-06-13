@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/3.png-955630ed2438fd710ca54630a034f174.stex"
+path="res://.import/ninja-idle-icon.png-6fec45efcfe1dbdda102f94e37cfc943.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/characters/body/3.png"
-dest_files=[ "res://.import/3.png-955630ed2438fd710ca54630a034f174.stex" ]
+source_file="res://assets/characters/ninja-idle-icon.png"
+dest_files=[ "res://.import/ninja-idle-icon.png-6fec45efcfe1dbdda102f94e37cfc943.stex" ]
 
 [params]
 
