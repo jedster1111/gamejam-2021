@@ -6,6 +6,7 @@ onready var attack_audio = get_node("AttackAudio")
 onready var animated_sprite = get_node("AnimatedSprite")
 onready var coyote_timer = get_node("CoyoteTimer")
 onready var fall_animation = get_node("FallAnimation")
+onready var camera = get_node("Camera2D")
 
 export var max_dash_distance = 200
 export var max_follow_through_distance = 150
@@ -100,6 +101,7 @@ func start_dash(dash_to_position):
 	animated_sprite.play("slash")
 
 	mode = Modes.DASHING
+	camera.start()
 	start_pos = position
 	direction = (dash_to_position - position).normalized()
 	velocity = speed * direction
@@ -114,6 +116,7 @@ func start_follow_through(enemy_position):
 	start_pos = enemy_position
 	velocity = direction * follow_through_speed
 	emit_signal("player_mode_changed", Modes.FOLLOW_THROUGH)
+	
 
 func end_follow_through():
 	start_idle()
