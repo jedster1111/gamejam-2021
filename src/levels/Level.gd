@@ -19,7 +19,10 @@ var current_combo = 1
 onready var start_position = Vector2()
 
 onready var player = Player.instance()
+
+onready var start = get_node("Start")
 onready var finish = get_node("Finish")
+
 onready var slashable_nodes = get_tree().get_nodes_in_group("slashable")
 onready var enemy_nodes = get_tree().get_nodes_in_group("enemies")
 onready var combo_timer = Timer.new()
@@ -32,7 +35,8 @@ func _ready():
 		finish.connect("level_complete", self, "create_level_menu")
 
 	player.connect("player_mode_changed", self, "_handle_player_mode_changed")
-	_set_player_start_position(player)
+	player.position = start.position
+	player.rotation = start.rotation - PI/2
 	add_child(player)
 	
 	for slashable in slashable_nodes:
@@ -42,7 +46,6 @@ func _ready():
 		enemy.connect("shoot", self, "_on_Enemy_shoot")
 	
 func _set_player_start_position(p):
-	print("default")
 	p.position = start_position
 
 func _on_Enemy_shoot(bullet):
