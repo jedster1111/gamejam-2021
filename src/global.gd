@@ -6,7 +6,8 @@ var levels_map = {
   "level-1": "Level 1?",
   "Justin_test_scene": "Justin's scene",
   "JumpingBuilding": "Building Jump",
-  "M1": "M1"
+  "M1": "Crow Graveyard",
+  "M2": "Building Jump 2"
 }
 
 var levels = levels_map.keys()
