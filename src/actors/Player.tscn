@@ -143,7 +143,7 @@ position = Vector2( -2.38419e-07, 4.76837e-07 )
 scale = Vector2( 1.42725, 1.42725 )
 frames = SubResource( 20 )
 animation = "idle"
-frame = 1
+frame = 2
 playing = true
 
 [node name="BulletDetector" type="Area2D" parent="."]
@@ -162,6 +162,9 @@ collision_mask = 32
 
 [node name="FloorDetectorShape" type="CollisionShape2D" parent="FloorDetector"]
 shape = SubResource( 22 )
+
+[node name="CoyoteTimer" type="Timer" parent="."]
+one_shot = true
 [connection signal="body_entered" from="EnemyDetector" to="." method="_on_EnemyDetector_body_entered"]
 [connection signal="body_entered" from="BulletDetector" to="." method="_on_BulletDetector_body_entered"]
 [connection signal="area_entered" from="FloorDetector" to="." method="_on_FloorDetector_area_entered"]

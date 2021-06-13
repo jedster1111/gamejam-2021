@@ -4,6 +4,7 @@ signal player_mode_changed(mode)
 
 onready var attack_audio = get_node("AttackAudio")
 onready var animated_sprite = get_node("AnimatedSprite")
+onready var coyote_timer = get_node("CoyoteTimer")
 
 export var max_dash_distance = 200
 export var max_follow_through_distance = 150
@@ -22,6 +23,7 @@ var current_floor = Floors.GROUND
 
 func _ready():
 	animated_sprite.play("idle")
+	coyote_timer.connect("timeout", self, "fall_to_death")
 
 func is_dash_away_from_wall(dash_direction: Vector2, wall_normal: Vector2):
 	return dash_direction.dot(wall_normal) > 0
@@ -53,6 +55,9 @@ func _physics_process(_delta):
 				end_follow_through()
 			else: move_player()
 
+func fall_to_death():
+	print("dead")
+
 func move_player():
 	rotation = velocity.angle()
 	var collision = move_and_collide(velocity * get_process_delta_time())
@@ -69,6 +74,7 @@ func _on_EnemyDetector_body_entered(enemy):
 
 func _on_FloorDetector_area_entered(body):
 	print("entering: ", body.name)
+	coyote_timer.stop()
 	current_floor = Floors.GROUND
 
 func _on_FloorDetector_area_exited(body):
@@ -77,8 +83,8 @@ func _on_FloorDetector_area_exited(body):
 
 func start_idle():
 	if current_floor == Floors.AIR:
-		start_death()
-		return
+		coyote_timer.start()
+		
 	animated_sprite.play("idle")
 	mode = Modes.IDLE
 	
@@ -99,6 +105,7 @@ func end_dash():
 	start_idle()
 
 func start_follow_through(enemy_position):
+	coyote_timer.stop()
 	attack_audio.play()
 	mode = Modes.FOLLOW_THROUGH
 	start_pos = enemy_position
