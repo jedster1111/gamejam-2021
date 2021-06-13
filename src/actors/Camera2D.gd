@@ -13,14 +13,12 @@ var priority = 0
 func start_shake(duration = 0.2, frequency = 15, amplitude = Vector2(10, 10), priority = 0):
 	if priority >= self.priority:
 		self.priority = priority
-		print("amp", amplitude)
 		self.amplitude = amplitude
 		duration_timer.wait_time = duration
 		if frequency != 0:
 			shake_timer.wait_time = 1/ float(frequency)
 		shake_timer.start()
 		duration_timer.start()
-		print("starting")
 		_new_shake()
 
 func _new_shake():
@@ -32,7 +30,6 @@ func _new_shake():
 	camera_tween.start()
 
 func _reset():
-	print("resetting")
 	amplitude = Vector2(0, 0)
 	camera_tween.interpolate_property(self, "offset", self.offset, Vector2(0,0), shake_timer.wait_time, TRANSITION, EASE)
 	camera_tween.stop_all()
@@ -44,5 +41,4 @@ func _on_ShakeTimer_timeout():
 
 
 func _on_Duration_timeout():
-	print("stoppin")
 	_reset()
