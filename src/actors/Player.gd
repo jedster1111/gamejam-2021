@@ -11,7 +11,7 @@ onready var death_audio = get_node("DeathAudio")
 
 export var max_dash_distance = 200
 export var max_follow_through_distance = 150
-export var speed = 4000
+export var speed = 2000
 export var follow_through_speed = 4000
 var velocity = Vector2(0,0)
 var direction = Vector2(0,0)
