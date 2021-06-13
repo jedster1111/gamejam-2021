@@ -34,6 +34,9 @@ func _set_up_level():
 	level.connect("points_earned", self, "score_calc")
 	level.connect("combo_timer_updated", self, "change_combo_timer_bar")
 	level.connect("level_restarted", self, "_on_level_restarted")
+
+	level.is_last_level = current_level + 1 == levels.size()
+
 	reset_state()
 	add_child(level)
 

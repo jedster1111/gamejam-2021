@@ -2,6 +2,13 @@ extends CanvasLayer
 
 signal next_level_selected
 
+var is_last_level = false
+
+onready var NextLevel = get_node("MarginContainer/CenterContainer/VBoxContainer/NextLevel")
+
+func _ready():
+	NextLevel.disabled = is_last_level
+
 func _on_NextLevel_pressed():
 	emit_signal("next_level_selected")
 

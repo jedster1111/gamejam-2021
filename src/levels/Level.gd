@@ -11,11 +11,12 @@ signal level_restarted
 
 
 var PauseMenu = preload("res://src/ui/PauseMenu.tscn")
-var LevelMenu = preload("res://src/ui/LevelComplete.tscn")
+var LevelComplete = preload("res://src/ui/LevelComplete.tscn")
 var GameOverMenu = preload("res://src/ui/GameOver.tscn")
 var Player = preload("res://src/actors/Player.tscn")
 
 var current_combo = 1
+var is_last_level = false
 
 onready var start_position = Vector2()
 
@@ -59,8 +60,6 @@ func _handle_player_mode_changed(mode):
 	match mode:
 		player.Modes.FOLLOW_THROUGH:
 			increase_combo()
-		#player.Modes.IDLE:
-		#	break_combo()
 		player.Modes.DEAD:
 			create_game_over_menu()
 		
@@ -87,9 +86,10 @@ func close_pause_menu():
 	
 func create_level_menu():
 	get_tree().paused = true
-	var level_menu = LevelMenu.instance()
-	level_menu.connect("next_level_selected", self, "_handle_level_changed")
-	add_child(level_menu)
+	var level_complete = LevelComplete.instance()
+	level_complete.is_last_level = is_last_level
+	level_complete.connect("next_level_selected", self, "_handle_level_changed")
+	add_child(level_complete)
 
 func create_game_over_menu():
 	get_tree().paused = true
