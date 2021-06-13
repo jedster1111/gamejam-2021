@@ -51,7 +51,7 @@ func _physics_process(_delta):
 			var follow_through_distance = (position - start_pos).length()
 			if follow_through_distance > max_follow_through_distance:
 				end_follow_through()
-			else: move_player()		
+			else: move_player()
 
 func move_player():
 	rotation = velocity.angle()
@@ -68,17 +68,20 @@ func _on_EnemyDetector_body_entered(enemy):
 		enemy.hit(velocity)
 
 func _on_FloorDetector_area_entered(body):
-	print(body.name)
-	var is_floor = body.is_in_group("floor")
-	print("is_floor", is_floor)
-	# if body.floor_type:
-	# 	current_floor = 
+	print("entering: ", body.name)
+	current_floor = Floors.GROUND
 
+func _on_FloorDetector_area_exited(body):
+	print("exiting: ", body.name)
+	current_floor = Floors.AIR
 
 func start_idle():
+	if current_floor == Floors.AIR:
+		start_death()
+		return
 	animated_sprite.play("idle")
 	mode = Modes.IDLE
-
+	
 	direction = Vector2()
 	velocity = Vector2()
 
@@ -116,3 +119,6 @@ func _on_BulletDetector_body_entered(body):
 	elif mode == Modes.IDLE:
 		start_death()
 		body.queue_free()
+
+
+
