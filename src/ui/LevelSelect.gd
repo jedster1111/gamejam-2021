@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 func _ready():
-	var levels = global.levels
+	var levels = global.level_names
 	for i in range(levels.size()):
 		var level = levels[i]
 		var button = Button.new()
