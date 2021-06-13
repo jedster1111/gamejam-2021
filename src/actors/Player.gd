@@ -15,7 +15,10 @@ var start_pos = position
 var current_wall_collision = null
 
 enum Modes {IDLE, DASHING, FOLLOW_THROUGH, DEAD}
+enum Floors {GROUND, AIR}
+
 var mode = Modes.IDLE
+var current_floor = Floors.GROUND
 
 func _ready():
 	animated_sprite.play("idle")
@@ -63,6 +66,14 @@ func _on_EnemyDetector_body_entered(enemy):
 	if mode == Modes.DASHING or mode == Modes.FOLLOW_THROUGH:
 		start_follow_through(position)
 		enemy.hit(velocity)
+
+func _on_FloorDetector_area_entered(body):
+	print(body.name)
+	var is_floor = body.is_in_group("floor")
+	print("is_floor", is_floor)
+	# if body.floor_type:
+	# 	current_floor = 
+
 
 func start_idle():
 	animated_sprite.play("idle")

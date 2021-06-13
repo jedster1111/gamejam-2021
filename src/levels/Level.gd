@@ -12,10 +12,13 @@ signal combo_timer_updated(perc)
 var PauseMenu = preload("res://src/ui/PauseMenu.tscn")
 var LevelMenu = preload("res://src/ui/LevelComplete.tscn")
 var GameOverMenu = preload("res://src/ui/GameOver.tscn")
+var Player = preload("res://src/actors/Player.tscn")
 
 var current_combo = 1
 
-onready var player = get_node("Player")
+onready var start_position = Vector2()
+
+onready var player = Player.instance()
 onready var finish = get_node("Finish")
 onready var slashable_nodes = get_tree().get_nodes_in_group("slashable")
 onready var enemy_nodes = get_tree().get_nodes_in_group("enemies")
@@ -29,6 +32,8 @@ func _ready():
 		finish.connect("level_complete", self, "create_level_menu")
 
 	player.connect("player_mode_changed", self, "_handle_player_mode_changed")
+	_set_player_start_position(player)
+	add_child(player)
 	
 	for slashable in slashable_nodes:
 		slashable.connect("points_earned", self, "on_point_earned")
@@ -36,6 +41,10 @@ func _ready():
 	for enemy in enemy_nodes:
 		enemy.connect("shoot", self, "_on_Enemy_shoot")
 	
+func _set_player_start_position(p):
+	print("default")
+	p.position = start_position
+
 func _on_Enemy_shoot(bullet):
 	add_child(bullet)
 
