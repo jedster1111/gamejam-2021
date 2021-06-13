@@ -22,6 +22,8 @@ func _ready():
 	$AnimatedSprite.play("idle")
 	points = 500
 
+func _load_destruction_scene():
+	DestructionScene = load("res://src/actors/BloodSplatter.tscn")
 
 func _process(_delta):
 	update()
