@@ -21,6 +21,9 @@ func _process(_delta):
 	if target:
 		aim()
 
+func _load_destruction_scene():
+	DestructionScene = load("res://src/actors/BloodSplatter.tscn")
+
 func alert():
 	is_alert = true
 	if $AlertTimer.is_stopped():

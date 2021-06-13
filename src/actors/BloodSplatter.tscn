@@ -21,6 +21,6 @@ animations = [ {
 
 [node name="BloodSplatter" type="AnimatedSprite"]
 frames = SubResource( 1 )
-frame = 4
+frame = 9
 playing = true
 flip_h = true
