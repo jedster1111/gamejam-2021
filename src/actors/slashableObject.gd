@@ -26,6 +26,7 @@ func get_destruction_scene():
 	return load("res://src/actors/Destruction.tscn")
 
 func get_destruction_sound():
+	audio_start_point = 0.4
 	return load("res://assets/audio/Door_smash.wav")
 
 func hit(hit_direction: Vector2):
